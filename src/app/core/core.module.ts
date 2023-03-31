@@ -3,12 +3,20 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
+import { HomeComponent } from './pages/home/home.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { CoreRoutingModule } from './core-routing.module';
+
 @NgModule({
-  declarations: [],
+  declarations: [
+    HomeComponent,
+    NotFoundComponent
+  ],
   imports: [
     CommonModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    CoreRoutingModule
   ],
   exports: [
     HttpClientModule
