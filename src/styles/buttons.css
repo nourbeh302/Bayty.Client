@@ -1,0 +1,73 @@
+button {
+    all: unset;
+    cursor: pointer;
+    font: inherit;
+}
+
+:is(button, .button) {
+    padding: 12px 24px;
+    border-radius: 2px;
+    text-align: center;
+}
+
+.button-full-width {
+    width: 100%;
+}
+
+/*#region Primary Button  */
+.button-primary {
+    background: var(--primary-base);
+    color: white;
+}
+
+.button-primary:hover {
+    background: var(--primary-hover);
+}
+
+/*#endregion */
+
+/*#region Secondary Button  */
+.button-secondary {
+    background: white;
+    border: 1px solid var(--primary-base);
+    color: var(--primary-base);
+}
+
+.button-secondary:hover {
+    background: var(--light-base);
+}
+
+/*#endregion */
+
+/*#region Tertiary Button  */
+.button-tertiary {
+    background: white;
+    color: var(--primary-base);
+}
+
+.button-tertiary:hover {
+    background: var(--light-base);
+}
+
+/*#endregion */
+
+/*#region Icon Button  */
+.button-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 2px;
+    display: grid;
+    place-content: center;
+    background: white;
+}
+
+.button-icon i {
+    display: grid;
+    place-content: center;
+}
+
+.button-icon:hover {
+    background: var(--light-base);
+}
+/*#endregion */
+
