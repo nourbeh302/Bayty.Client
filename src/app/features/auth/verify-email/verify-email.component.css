@@ -1,0 +1,14 @@
+.form {
+    min-height: unset;
+}
+
+.small {
+    font-size: 15px;
+    color: grey;
+}
+
+img {
+    margin-inline: auto;
+    aspect-ratio: 1;
+    width: min(400px, 100%);
+}
