@@ -11,7 +11,7 @@ import { User } from 'src/app/core/models/User';
 })
 export class LoginComponent implements OnInit {
 
-  user: User = new User();
+  user: User = new User("", "", "", 0);
 
   userList: User[] = [
     {
@@ -24,7 +24,8 @@ export class LoginComponent implements OnInit {
       lastName: "Samir",
       phoneNumber: "0100 000 0000",
       gender: Gender.Male,
-      address: ""
+      address: "",
+      age: 21
     },
     {
       userId: "2",
@@ -36,7 +37,8 @@ export class LoginComponent implements OnInit {
       lastName: "Samal",
       phoneNumber: "0110 000 0000",
       gender: Gender.Female,
-      address: ""
+      address: "",
+      age: 32
     }
   ]
 

@@ -53,8 +53,8 @@
 }
 
 .sidebar-block:is(:focus) {
-  background: rgb(26, 26, 26);
-  color: white;
+  background: var(--light-base);
+  color: var(--primary-base);
 }
 
 .sidebar-block .icon {

@@ -68,6 +68,11 @@
         <div class="form-field">
           <label for="phoneNumber">Phone Number</label>
           <input id="phoneNumber" type="text" formControlName="phoneNumber" maxlength="11" placeholder=" 0106 000 3232">
+          <span class="error-message" *ngIf="phoneNumber?.errors?.['required'] && phoneNumber?.touched">Please fill this
+            field</span>
+          <span class="error-message"
+            *ngIf="phoneNumber?.errors?.['minlength'] || phoneNumber?.errors?.['maxlength']">Please enter a valid phone
+            number</span>
         </div>
 
         <div class="form-field">
@@ -76,19 +81,30 @@
         </div>
       </div>
 
-      <!-- <div class="form-splitter">
+      <div class="form-splitter">
         <div class="form-field">
           <label for="age">Age</label>
-          <input id="age" type="number" min="0" max="100" formControlName="age">
+          <input id="age" type="number" min="0" max="100" formControlName="age" placeholder="Years old">
         </div>
 
         <div class="form-field">
           <label for="gender">Gender</label>
-          <select (change)="changeGender($event)" formControlName="gender">
+          <select formControlName="gender">
+            <option selected>Choose gender</option>
             <option *ngFor="let gender of enumKeys">{{ gender }}</option>
           </select>
+          <!-- <div class="c-form-field c-select">
+            <select placeholder="Property Type">
+              <option value="" selected>Property Type</option>
+              <option value="">Villa</option>
+              <option value="">Apartment</option>
+            </select>
+            <div class="select-icon">
+              <i class="icon icon-ic_fluent_chevron_down_20_regular"></i>
+            </div>
+          </div> -->
         </div>
-      </div> -->
+      </div>
 
       <div class="login-cta">
         <span>Already have an account?&nbsp;</span>
@@ -96,7 +112,8 @@
       </div>
     </div>
 
-    <button routerLink="/verifyEmail" type="submit" (click)="printUser($event)" [disabled]="registerForm.invalid">Register</button>
+    <button routerLink="/verifyEmail" type="submit" (click)="printUser($event)"
+      [disabled]="registerForm.invalid">Register</button>
 
   </form>
 </div>

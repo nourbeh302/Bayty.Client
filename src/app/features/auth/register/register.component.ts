@@ -13,13 +13,15 @@ import { User } from 'src/app/core/models/User';
 })
 export class RegisterComponent implements OnInit {
 
-  user: User = new User();
+  user: User = new User("", "", "", 0);
 
-  gender = Gender;
+  genderReference = Gender;
   enumKeys: string[] = [];
 
-  constructor(private fb: FormBuilder, private _http: HttpClient) {
-    this.enumKeys = Object.keys(this.gender)
+  constructor(
+    // private _http: HttpClient
+  ) {
+    this.enumKeys = Object.keys(this.genderReference)
     console.log(this.enumKeys);
   }
 
@@ -49,7 +51,9 @@ export class RegisterComponent implements OnInit {
       Validators.minLength(11),
       Validators.maxLength(11),
     ])), /* ^01[0125][0-9]{8}$ Phone number regex */
-    address: new FormControl(this.user.address)
+    address: new FormControl(this.user.address),
+    age: new FormControl(this.user.age),
+    gender: new FormControl(this.user.gender),
   })
 
   get firstName() { return this.registerForm.get('firstName') }
@@ -58,17 +62,19 @@ export class RegisterComponent implements OnInit {
   get password() { return this.registerForm.get('password') }
   get phoneNumber() { return this.registerForm.get('phoneNumber') }
   get address() { return this.registerForm.get('address') }
+  get age() { return this.registerForm.get('age') }
+  get gender() { return this.registerForm.get('gender')?.value }
 
-  /* changeGender: Function = (event: any): void => this.registerForm.value.gender = event.target.value; */
+  changeGender: Function = (event: any): void => this.registerForm.value.gender = event.target.value;
 
   printUser(e: Event) {
-    e.preventDefault();
-    this._http.post<any>('https://localhost:7094/account/register', { accountType: "Personal", ...this.registerForm.value })
-      .subscribe(next => {
-        console.log(next);
-      }, error => {
-        console.log(error);
-      });
+    // e.preventDefault();
+    // this._http.post<any>('https://localhost:7094/account/register', { accountType: "Personal", ...this.registerForm.value })
+    //   .subscribe(next => {
+    //     console.log(next);
+    //   }, error => {
+    //     console.log(error);
+    //   });
 
     console.log(this.registerForm.value);
   }
