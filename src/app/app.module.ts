@@ -6,16 +6,19 @@ import { AppComponent } from './app.component';
 
 import { CoreModule } from './core/core.module';
 import { FeaturesModule } from './features/features.module';
-import { SharedModule } from './shared/shared.module';
+
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { LoaderComponent } from './shared/components/loader/loader.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule,
     CoreModule,
     FeaturesModule
   ],

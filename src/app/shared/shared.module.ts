@@ -3,14 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { SharedRoutingModule } from './shared-routing.module';
 
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { LoaderComponent } from './components/loader/loader.component';
-
 @NgModule({
-  declarations: [
-    NavbarComponent,
-    LoaderComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     SharedRoutingModule
