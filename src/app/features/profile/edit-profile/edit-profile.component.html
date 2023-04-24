@@ -80,10 +80,17 @@
           <input id="location" type="text" formControlName="address" placeholder=" 5th Settlement">
         </div>
       </div>
+
+    </div>
+    <div class="form-field">
+      <button routerLink="/verifyEmail" type="submit" (click)="printUser($event)"
+        [disabled]="editProfileForm.invalid">Save changes</button>
+    </div>
+    
+    <div class="form-field">
+      <button class="button button-tertiary" routerLink="../">Go back</button>
     </div>
 
-    <button routerLink="/verifyEmail" type="submit" (click)="printUser($event)"
-      [disabled]="editProfileForm.invalid">Save changes</button>
 
   </form>
 </div>

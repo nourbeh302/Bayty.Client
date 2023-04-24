@@ -2,7 +2,7 @@
     --filter-height: 240px;
     background: white;
 
-    width: min(1080px, 100%);
+    width: min(920px, 100%);
     height: min(var(--filter-height), 100%);
 
     box-shadow: var(--layout-shadow);
@@ -14,17 +14,14 @@
     translate: 0 calc(var(--filter-height) / -2);
 }
 
-.control-group {
-    background: hsl(210, 100%, 98%);
-
-}
-
 .control-group button {
     padding: 16px 32px;
+    border-radius: 0;
 }
 
 .control-group button:focus {
-    background: white;
+    background: var(--primary-base);
+    color: white;
 }
 
 /* Filter form fields */
@@ -48,8 +45,9 @@
 
 .home-filter .c-form-field :is(input, select) {
     width: 100%;
-    background: white;
-    border: 1px solid black;
+    background: var(--light-base);
+    /* background: white; */
+    /* border: 1px solid black; */
 }
 
 .home-filter .c-form-field:has([type="submit"]) {

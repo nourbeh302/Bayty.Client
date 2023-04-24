@@ -58,7 +58,7 @@ select {
 :is(input, select) {
   margin-top: 2px;
   outline: none;
-  border: 1px solid rgb(160, 160, 160);
+  border: none;
   border-radius: 2px;
   background: var(--light-base);
 }
