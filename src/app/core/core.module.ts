@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { RouterModule } from "@angular/router";
+import { HttpClientModule } from "@angular/common/http";
 
-import { CoreRoutingModule } from './core-routing.module';
-import { HomeModule } from './pages/home/home.module';
-import { NotFoundModule } from './pages/not-found/not-found.module';
+import { CoreRoutingModule } from "./core-routing.module";
+import { HomeModule } from "./pages/home/home.module";
+import { NotFoundModule } from "./pages/not-found/not-found.module";
 
 @NgModule({
   declarations: [],
@@ -17,8 +17,6 @@ import { NotFoundModule } from './pages/not-found/not-found.module';
     HomeModule,
     NotFoundModule,
   ],
-  exports: [
-    HttpClientModule
-  ]
+  exports: [HttpClientModule],
 })
-export class CoreModule { }
+export class CoreModule {}

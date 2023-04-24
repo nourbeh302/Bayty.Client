@@ -8,5 +8,5 @@ export class Account {
     public role: Role | null = null,
     public address: string = "",
     public phoneNumber: string = ""
-  ) { }
+  ) {}
 }

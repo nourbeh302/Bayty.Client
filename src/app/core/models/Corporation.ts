@@ -6,8 +6,8 @@ export class Corporation extends Account {
     public corporationId: string = "",
     public corporationName: string = "",
     public taxpayerIdentificationNumber: string = ""
-  ) { 
-    super()
-    this.role = Role.Corporation
+  ) {
+    super();
+    this.role = Role.Corporation;
   }
 }

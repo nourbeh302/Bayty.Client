@@ -8,9 +8,9 @@ export class User extends Account {
     public firstName: string = "",
     public lastName: string = "",
     public age: number,
-    public gender: Gender | null = null,
-  ) { 
-    super()
-    this.role = Role.User
+    public gender: Gender | null = null
+  ) {
+    super();
+    this.role = Role.User;
   }
 }

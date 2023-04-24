@@ -1,12 +1,10 @@
 .cards-container {
     margin-top: 32px;
     display: flex;
-    gap: 32px;
+    gap: 16px;
     overflow-x: scroll;
-    margin: auto;
-    padding-bottom: 48px;
+    padding-bottom: 32px;
     scroll-snap-type: both proximity;
-
 }
 
 /*#region Scrollbar preferences  */

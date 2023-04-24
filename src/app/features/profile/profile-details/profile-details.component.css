@@ -58,8 +58,15 @@
 }
 
 .sidebar-block .icon {
-  width: 48px;
+  width: 32px;
   height: 48px;
+  font-size: 24px;
+  display: grid;
+  place-content: center start;
+}
+
+.sidebar-block:is(:focus) .icon {
+  color: var(--primary-base);
 }
 
 h1 {
