@@ -1,0 +1,47 @@
+.page-wrapper {
+    padding-block: 64px;
+}
+
+.form {
+    margin-top: 32px;
+    width: 100%;
+}
+
+.icon {
+    font-size: 48px;
+}
+
+label.imageUrl-container {
+    margin-top: 24px;
+    gap: 4px;
+    background: var(--light-base);
+    width: 100%;
+    min-height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+label.imageUrl-container:hover {
+    background: rgb(236, 236, 236);
+}
+
+label.imageUrl-container span {
+    color: var(--primary-base);
+}
+
+input[type="file"] {
+    display: none;
+}
+
+button[type="submit"] {
+    margin-top: 24px;
+}
+
+@media (width > 625px) {
+    button[type="submit"] {
+        width: max-content;
+    }
+}

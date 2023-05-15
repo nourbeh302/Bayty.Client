@@ -22,8 +22,8 @@ export class RegisterComponent implements OnInit {
   genderReference = Gender;
   enumKeys: string[] = [];
 
-  constructor() // private _http: HttpClient
-  {
+  constructor() {
+    // private _http: HttpClient
     this.enumKeys = Object.keys(this.genderReference);
     console.log(this.enumKeys);
   }
@@ -67,9 +67,12 @@ export class RegisterComponent implements OnInit {
       ])
     ) /* ^01[0125][0-9]{8}$ Phone number regex */,
     address: new FormControl(this.user.address),
-    age: new FormControl(this.user.age, Validators.compose([
-      // Validators.min(21),
-    ])),
+    age: new FormControl(
+      this.user.age,
+      Validators.compose([
+        // Validators.min(21),
+      ])
+    ),
     gender: new FormControl(this.user.gender),
   });
 

@@ -1,0 +1,174 @@
+.page-wrapper {
+    padding-block: 48px;
+}
+
+.ad-address {
+    margin-top: 24px;
+}
+
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+}
+
+.ad-images-container {
+    position: relative;
+    margin-block: 32px 64px;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    min-height: 360px;
+}
+
+.large {
+    grid-row: span 2;
+}
+
+.chip {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    padding: 8px 32px;
+    z-index: 2;
+    border-radius: 4px;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 14px;
+}
+
+.chip.sale {
+    background: var(--primary-base);
+    color: white;
+}
+
+.chip.rent {
+    background: rgb(107, 57, 107);
+    color: white;
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image {
+    position: relative;
+}
+
+.image::before {
+    --overlay-black: hsla(360, 0%, 0%, 0.2);
+    position: absolute;
+    content: "";
+    display: block;
+    background: var(--overlay-black);
+    width: 100%;
+    height: 100%;
+
+    transition: all 375ms ease-in;
+}
+
+.image:hover::before {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    --overlay-black: hsla(360, 0%, 0%, 0);
+}
+
+.description-body {
+    margin-top: 24px;
+}
+
+/*#region contact */
+.contact-container {
+    border-radius: 8px;
+    background: white;
+    box-shadow: var(--layout-shadow);
+    padding: 32px;
+    height: max-content;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.region {
+    color: grey;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/*#endregion */
+
+/*#region contact */
+.property-attributes {
+    margin-top: 32px;
+    display: flex;
+    gap: 32px;
+}
+
+.property-attributes>div {
+    padding: 32px 64px;
+    background: white;
+    box-shadow: var(--layout-shadow);
+    border-radius: 4px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.property-attributes>div .icon {
+    font-size: 28px;
+}
+/*#endregion */
+
+@media (width > 1024px) {
+    .two-columns {
+        grid-template-columns: 5fr 3fr;
+    }
+}
+
+.button-custom {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 64px;
+    width: 48px;
+    height: 48px;
+    background: var(--primary-base);
+    font-size: 24px;
+    color: white;
+
+    transition: all 375ms ease-in;
+}
+
+.button-custom .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-custom span {
+    display: none;
+}
+
+.button-custom:hover {
+    width: max-content;
+}
+
+.button-custom:hover :is(span) {
+    display: block;
+    font-size: 16px;
+}
+
+.cta-button.button-group {
+    display: flex;
+    gap: 16px;
+}

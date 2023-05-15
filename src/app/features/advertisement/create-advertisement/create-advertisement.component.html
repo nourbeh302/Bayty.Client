@@ -1,1 +1,73 @@
-<p>create-advertisement works!</p>
+<div class="page-wrapper container">
+    <h1>List new properties</h1>
+
+    <form class="form">
+        <div class="form-group">
+            <div class="form-field">
+                <label for="state">Property State</label>
+                <input type="text" placeholder="Rent">
+            </div>
+
+            <div class="form-field">
+                <label for="address">Property Address</label>
+                <input type="text" placeholder="11 Makram Ebed St. Madinet Nasr, Cairo, Egypt">
+            </div>
+
+            <div class="form-field">
+                <label for="description">Property Description</label>
+                <textarea name="" id="" cols="30" rows="10" placeholder="This property has..."></textarea>
+            </div>
+
+            <div class="form-splitter split-4">
+                <div class="form-field">
+                    <label for="rooms">Rooms</label>
+                    <input type="text" placeholder="4">
+                </div>
+                <div class="form-field">
+                    <label for="bathrooms">Bathrooms</label>
+                    <input type="text" placeholder="2">
+                </div>
+                <div class="form-field">
+                    <label for="size">Size</label>
+                    <input type="text" placeholder="180 SqM">
+                </div>
+                <div class="form-field">
+                    <label for="price">Price</label>
+                    <input type="text" placeholder="1200 L.E.">
+                </div>
+            </div>
+
+            <div class="form-field">
+                <label for="furnishing">Furnishing</label>
+                <input type="text" placeholder="Fully furnished">
+            </div>
+
+
+            <div class="form-field" *ngFor="let container of imageContainers">
+                <label class="imageUrl-container" for="imageUrl">
+                    <i class="icon icon-ic_fluent_image_20_regular"></i>
+                    <div><span>Upload an image</span> or drag and drop</div>
+                    <div>Image size up to 20MB</div>
+                    <div>760px minimum width</div>
+                </label>
+                <input type="file" name="imageUrl" id="imageUrl">
+            </div>
+
+
+            <label for="imageUrl" class="button button-secondary">
+                Add new image
+            </label>
+            <style>
+                input[type="file"] {
+                    display: none;
+                }
+            </style>
+            <input type="file" name="imageUrl" id="imageUrl">
+            <!-- <button type="button" class="button button-secondary" (click)="addImage()"></button> -->
+
+            <button type="submit" class="button button-primary">Add property</button>
+
+        </div>
+
+    </form>
+</div>
