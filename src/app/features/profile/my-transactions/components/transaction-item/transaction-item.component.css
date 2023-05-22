@@ -1,0 +1,64 @@
+.item {
+    background: white;
+    padding: 32px;
+    box-shadow: var(--layout-shadow);
+    border-radius: 4px;
+    transition: scale 250ms ease-in;
+
+    display: flex;
+    align-items: start;
+    gap: 32px;
+}
+
+.item:hover {
+    scale: 102%;
+}
+
+.status {
+    margin-left: auto;
+}
+
+.chip {
+    padding: 8px 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: small;
+    font-weight: bold;
+    border: 1.2px solid transparent;
+    border-radius: 1200px;
+}
+
+.chip-cancelled {
+    --red-base: rgb(244, 72, 72);
+    border-color: var(--red-base);
+    color: var(--red-base);
+}
+
+.chip-completed {
+    --green-base: rgb(54, 130, 54);
+    border-color: var(--green-base);
+    color: var(--green-base);
+}
+
+.chip-pending {
+    --blue-base: rgb(35, 109, 171);
+    border-color: var(--blue-base);
+    color: var(--blue-base);
+}
+
+.chip-draft {
+    --grey-base: rgb(107, 107, 107);
+    border-color: var(--grey-base);
+    color: var(--grey-base);
+}
+
+@media (width < 625px) {
+    .item {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .status {
+        margin-left: unset;
+    }
+}

@@ -1,1 +1,8 @@
-<p>my-transactions works!</p>
+<div class="page-wrapper container">
+    <h1>My Transactions</h1>
+
+    <div class="transactions-container">
+        <app-transaction-item *ngFor="let transaction of transactions"
+            [transaction]="transaction"></app-transaction-item>
+    </div>
+</div>
