@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Gender } from "src/app/core/enums/Gender";
 import { Role } from "src/app/core/enums/Role";
 import { User } from "src/app/core/models/User";
+import { AuthService } from "src/app/core/services/auth.service";
 
 @Component({
   selector: "app-login",
@@ -49,7 +50,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl(this.user.password, Validators.required),
   });
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {}
 
@@ -66,7 +67,12 @@ export class LoginComponent implements OnInit {
   get email() {
     return this.loginForm.get("email");
   }
+  
   get password() {
     return this.loginForm.get("password");
+  }
+
+  login() {
+    this.authService.login(this.email?.value, this.password?.value);
   }
 }

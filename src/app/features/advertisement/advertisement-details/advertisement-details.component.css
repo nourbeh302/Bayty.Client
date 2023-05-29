@@ -105,10 +105,11 @@
 
 /*#endregion */
 
-/*#region contact */
+/*#region property attributes */
 .property-attributes {
     margin-top: 32px;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 32px;
 }
 

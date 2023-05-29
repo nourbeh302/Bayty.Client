@@ -1,7 +1,7 @@
 <div class="page-wrapper container">
     <h1>List new properties</h1>
 
-    <form class="form">
+    <form class="form" (submit)="onSubmit($event)">
         <div class="form-group">
             <div class="form-field">
                 <label for="state">Property State</label>
@@ -57,13 +57,9 @@
             <label for="imageUrl" class="button button-secondary">
                 Add new image
             </label>
-            <style>
-                input[type="file"] {
-                    display: none;
-                }
-            </style>
-            <input type="file" name="imageUrl" id="imageUrl">
-            <!-- <button type="button" class="button button-secondary" (click)="addImage()"></button> -->
+            <input type="file" name="imageUrl" id="imageUrl" (change)="onFileSelected($event)">
+
+            <img width="256" height="256" [src]="fileToUpload?.name" alt="">
 
             <button type="submit" class="button button-primary">Add property</button>
 
