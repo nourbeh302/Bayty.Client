@@ -1,0 +1,87 @@
+.image-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 32px;
+}
+
+.image-container {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    position: relative;
+}
+
+.image-container label {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: hsla(0, 0%, 10%, 0.8);
+
+    opacity: 0;
+    transition: all 250ms ease-in;
+
+    display: grid;
+    place-content: center;
+}
+
+.image-container label:hover {
+    opacity: 1;
+}
+
+i {
+    font-size: 36px;
+    color: white;
+    display: grid;
+    place-content: center;
+}
+
+.image-container input {
+    display: none;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+/*  */
+.error-message {
+    color: hsl(0, 79%, 58%);
+    font-size: smaller;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid hsl(0, 79%, 58%);
+    background: hsl(0, 100%, 97%);
+}
+
+.login-cta {
+    font-size: smaller;
+}
+
+.login-cta a {
+    color: var(--primary-base);
+}
+
+[type="submit"] {
+    background: var(--primary-base);
+    color: white;
+}
+
+[type="submit"]:hover {
+    background: var(--primary-hover);
+}
+
+[type="submit"]:disabled {
+    cursor: not-allowed;
+    background: grey;
+}

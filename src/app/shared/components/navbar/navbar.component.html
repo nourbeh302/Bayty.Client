@@ -19,9 +19,11 @@
         <a class="button-icon user-button" routerLink="profile">
           <i class="icon icon-ic_fluent_person_20_regular"></i>
         </a>
+
         <button class="button-icon menu-button navbar-toggler" (click)="toggleNavbarCollapse()">
           <i class="icon icon-ic_fluent_clock_20_regular"></i>
         </button>
+        
       </div>
       <div class="navbar-cta">
         <button class="button button-secondary" (click)="isUserLoggedIn = !isUserLoggedIn">Sign out</button>
@@ -35,13 +37,16 @@
           </button>
         </div>
         <div class="navbar-cta">
-          <button class="button button-tertiary" routerLink="advertisement/create">Post</button>
+          <button class="button button-secondary" routerLink="advertisement/create">Post</button>
+          <a class="button button-tertiary" routerLink="advertisement/search">Properties</a>
+          <a class="button button-tertiary" routerLink="privacy">Privacy</a>
           <button class="button button-tertiary" routerLink="login">Login</button>
           <button class="button button-primary" (click)="isUserLoggedIn = !isUserLoggedIn" routerLink="register">Get Started</button>
         </div>
       </div>
     </ng-template>
   </nav>
+  
   <div class="navbar-collapse" *ngIf="isNavbarCollapseToggled">
     <a class="button-icon notification-button" (click)="toggleNavbarCollapse()">
       <i class="icon icon-ic_fluent_alert_20_regular"></i>
@@ -52,7 +57,7 @@
     <a class="button-icon payment-button" (click)="toggleNavbarCollapse()">
       <i class="icon icon-ic_fluent_wallet_20_regular"></i>
     </a>
-    <a class="button-icon user-button" (click)="toggleNavbarCollapse()" routerLink="user">
+    <a class="button-icon user-button" routerLink="profile">
       <i class="icon icon-ic_fluent_person_20_regular"></i>
     </a>
   </div>

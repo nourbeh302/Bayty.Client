@@ -1,0 +1,10 @@
+.footer-wrapper {
+    margin-top: 64px;
+    padding-block: 64px;
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+    background: var(--dark-base);
+    color: var(--light-base);
+}

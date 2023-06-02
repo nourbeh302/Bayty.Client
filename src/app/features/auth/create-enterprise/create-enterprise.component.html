@@ -1,0 +1,44 @@
+<div class="form-layout">
+
+    <!-- <form [formGroup]="createEnterpriseForm"> -->
+    <form>
+        <h1>Create Enterprise</h1>
+        <p>Join as the trusted sellers like as enterprises</p>
+
+        <div class="form-group">
+
+            <div class="image-center">
+                <div class="image-container">
+                    <img src="assets/images/clumsy.jpg"
+                        alt="">
+                    <label for="profile-image">
+                        <i class="icon icon-ic_fluent_camera_add_20_regular"></i>
+                    </label>
+                    <input type="file" id="profile-image">
+                </div>
+            </div>
+
+            <div class="form-splitter">
+                <div class="form-field">
+                    <label for="age">Location</label>
+                    <input id="location" type="text" formControlName="address" placeholder=" 5th Settlement">
+                </div>
+            </div>
+
+            <div class="form-splitter">
+                <div class="form-field">
+                    <label for="age">Age</label>
+                    <input id="age" type="number" min="0" max="100" formControlName="age" placeholder="Years old">
+                </div>
+            </div>
+
+            <div class="login-cta">
+                <span>Already have an account?&nbsp;</span>
+                <a routerLink="/login">Sign in</a>
+            </div>
+        </div>
+
+        <button routerLink="/verifyEmail" type="submit">Create Enterprise</button>
+
+    </form>
+</div>

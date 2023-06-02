@@ -6,9 +6,12 @@ import { HttpClientModule } from "@angular/common/http";
 import { CoreRoutingModule } from "./core-routing.module";
 import { HomeModule } from "./pages/home/home.module";
 import { NotFoundModule } from "./pages/not-found/not-found.module";
+import { PrivacyComponent } from './pages/privacy/privacy.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    PrivacyComponent
+  ],
   imports: [
     CommonModule,
     RouterModule,
@@ -19,4 +22,4 @@ import { NotFoundModule } from "./pages/not-found/not-found.module";
   ],
   exports: [HttpClientModule],
 })
-export class CoreModule {}
+export class CoreModule { }

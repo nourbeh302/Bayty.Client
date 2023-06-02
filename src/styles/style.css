@@ -1,14 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap'); */
 
 :root {
   --light-base: hsl(0, 0%, 95%);
+  --dark-base: hsl(0, 0%, 10%);
   --layout-shadow: 0px 0px 8px hsla(0, 0%, 10%, 10%);
 
   --primary-base: hsl(237, 90%, 61%);
   --primary-hover: hsl(237, 72%, 54%);
 
-  --layout-font: 'DM Sans', sans-serif;
+  --grey-base: hsl(237, 0%, 40%);
+
+  --layout-font: 'Satoshi-Variable', sans-serif;
 
   --navbar-height: 72px;
 }
@@ -24,6 +27,8 @@
 body {
   background: var(--light-base);
   font-family: var(--layout-font);
+  font-weight: 500;
+
 }
 
 li {

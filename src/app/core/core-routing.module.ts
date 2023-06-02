@@ -1,15 +1,15 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./pages/home/home.component";
-import { NotFoundComponent } from "./pages/not-found/not-found.component";
+import { PrivacyComponent } from "./pages/privacy/privacy.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
-  // { path: "**", pathMatch: "full", component: NotFoundComponent },
+  { path: "privacy", component: PrivacyComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class CoreRoutingModule {}
+export class CoreRoutingModule { }
