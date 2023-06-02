@@ -133,7 +133,7 @@
     z-index: 1;
 }
 
-.toggle-option:before {
+.toggle-option::before {
     content: "";
     position: absolute;
     top: 0;
@@ -159,7 +159,7 @@
     color: #fff;
 }
 
-.toggle-radio:checked~.toggle-option:before {
+.toggle-radio:checked~.toggle-option::before {
     background-color: var(--primary-base);
 }
 

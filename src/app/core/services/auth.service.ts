@@ -36,4 +36,8 @@ export class AuthService {
     return this.loggedIn.getValue();
   }
 
+  verifyEmailAddress() { }
+  
+  verifyPhoneNumber() { }
+
 }
