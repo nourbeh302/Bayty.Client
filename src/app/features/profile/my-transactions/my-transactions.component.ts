@@ -27,6 +27,9 @@ export class MyTransactionsComponent {
     { transactionId: this.generateUuid(), createdAt: this.formattedDate, status: 'cancelled' },
     { transactionId: this.generateUuid(), createdAt: this.formattedDate, status: 'completed' },
     { transactionId: this.generateUuid(), createdAt: this.formattedDate, status: 'cancelled' },
+    { transactionId: this.generateUuid(), createdAt: this.formattedDate, status: 'draft' },
+    { transactionId: this.generateUuid(), createdAt: this.formattedDate, status: 'pending' },
+    { transactionId: this.generateUuid(), createdAt: this.formattedDate, status: 'completed' },
   ]
 
 }

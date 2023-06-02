@@ -3,15 +3,15 @@
     padding: 32px;
     box-shadow: var(--layout-shadow);
     border-radius: 4px;
-    transition: scale 250ms ease-in;
+    transition: translate 250ms ease-in;
 
     display: flex;
-    align-items: start;
+    align-items: center;
     gap: 32px;
 }
 
 .item:hover {
-    scale: 102%;
+    translate: 8px;
 }
 
 .status {
@@ -22,34 +22,33 @@
     padding: 8px 16px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: small;
-    font-weight: bold;
+    font-size: 12px;
     border: 1.2px solid transparent;
-    border-radius: 1200px;
+    border-radius: 2px;
 }
 
 .chip-cancelled {
     --red-base: rgb(244, 72, 72);
-    border-color: var(--red-base);
-    color: var(--red-base);
+    color: var(--light-base);
+    background: var(--red-base);
 }
 
 .chip-completed {
-    --green-base: rgb(54, 130, 54);
-    border-color: var(--green-base);
-    color: var(--green-base);
+    --green-base: rgb(108, 177, 108);
+    color: var(--light-base);
+    background: var(--green-base);
 }
 
 .chip-pending {
-    --blue-base: rgb(35, 109, 171);
-    border-color: var(--blue-base);
-    color: var(--blue-base);
+    --blue-base: var(--primary-base);
+    color: var(--light-base);
+    background: var(--blue-base);
 }
 
 .chip-draft {
     --grey-base: rgb(107, 107, 107);
-    border-color: var(--grey-base);
-    color: var(--grey-base);
+    color: var(--light-base);
+    background: var(--grey-base);
 }
 
 @media (width < 625px) {
