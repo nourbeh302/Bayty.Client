@@ -1,13 +1,13 @@
 import { Role } from "../enums/Role";
 import { Account } from "./Account";
 
-export class Corporation extends Account {
+export class Enterprise extends Account {
   constructor(
-    public corporationId: string = "",
-    public corporationName: string = "",
+    public enterpriseId: string = "",
+    public enterpriseName: string = "",
     public taxpayerIdentificationNumber: string = ""
   ) {
     super();
-    this.role = Role.Corporation;
+    this.role = Role.Enterprise;
   }
 }

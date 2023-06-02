@@ -15,8 +15,7 @@
 }
 
 .navbar-brand img {
-  aspect-ratio: 1;
-  width: 36px;
+  height: 32px;
 }
 
 .navbar-right {
@@ -37,6 +36,15 @@
 .navbar-right .navbar-links,
 .navbar-cta {
   gap: 8px;
+}
+
+.navbar-cta span {
+  display: block;
+  background: rgb(199, 199, 199);
+  width: 1.5px;
+  height: 40px;
+  display: grid;
+  place-self: center;
 }
 
 .button-icon i {

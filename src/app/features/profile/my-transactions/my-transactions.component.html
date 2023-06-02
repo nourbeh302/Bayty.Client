@@ -2,6 +2,11 @@
     <h1>My Transactions</h1>
 
     <div class="transactions-container">
+        <div class="transactions-header">
+            <div>#ID</div>
+            <div>Created At</div>
+            <div>Status</div>
+        </div>
         <app-transaction-item *ngFor="let transaction of transactions"
             [transaction]="transaction"></app-transaction-item>
     </div>

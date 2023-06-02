@@ -2,7 +2,7 @@
   <nav class="navbar container">
     <div class="navbar-brand navbar-left">
       <a routerLink="">
-        <img src="/assets/images/PNG.png" alt="">
+        <img src="/assets/images/bayty.svg" alt="">
       </a>
     </div>
     <div class="navbar-right" *ngIf="isUserLoggedIn; else signedOutBlock">
@@ -37,9 +37,10 @@
           </button>
         </div>
         <div class="navbar-cta">
-          <button class="button button-secondary" routerLink="advertisement/create">Post</button>
+          <button class="button button-tertiary" routerLink="advertisement/create">Post</button>
           <a class="button button-tertiary" routerLink="advertisement/search">Properties</a>
           <a class="button button-tertiary" routerLink="privacy">Privacy</a>
+          <span></span>
           <button class="button button-tertiary" routerLink="login">Login</button>
           <button class="button button-primary" (click)="isUserLoggedIn = !isUserLoggedIn" routerLink="register">Get Started</button>
         </div>

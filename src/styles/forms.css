@@ -64,7 +64,7 @@ textarea {
   margin-top: 2px;
   outline: none;
   border: none;
-  border-radius: 2px;
+  border-radius: 4px;
   background: var(--light-base);
 }
 

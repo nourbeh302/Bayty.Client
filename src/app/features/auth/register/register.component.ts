@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
+import { AuthService } from "src/app/core/services/auth.service";
 import {
   FormBuilder,
   FormControl,
@@ -17,15 +18,13 @@ import { User } from "src/app/core/models/User";
   styleUrls: ["./register.component.css"],
 })
 export class RegisterComponent implements OnInit {
-  user: User = new User("", "", "", 0);
+  user: User = new User("hishcdij", "", "", 0, null);
 
   genderReference = Gender;
   enumKeys: string[] = [];
 
-  constructor() {
-    // private _http: HttpClient
+  constructor(private _authService : AuthService) {
     this.enumKeys = Object.keys(this.genderReference);
-    console.log(this.enumKeys);
   }
 
   registerForm: FormGroup = new FormGroup({
@@ -104,16 +103,17 @@ export class RegisterComponent implements OnInit {
   changeGender: Function = (event: any): void =>
     (this.registerForm.value.gender = event.target.value);
 
-  printUser(e: Event) {
+  register() {
     // e.preventDefault();
-    // this._http.post<any>('https://localhost:7094/account/register', { accountType: "Personal", ...this.registerForm.value })
-    //   .subscribe(next => {
-    //     console.log(next);
-    //   }, error => {
-    //     console.log(error);
-    //   });
-
-    console.log(this.registerForm.value);
+    // 
+    this.user = new User(
+      this.firstName?.value,
+      this.lastName?.value,
+      this.age?.value,
+      this.gender.value
+      );
+      this._authService.register(this.user);
+    // console.log(this.registerForm.value);
   }
 
   ngOnInit(): void {

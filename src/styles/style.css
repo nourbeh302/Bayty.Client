@@ -1,19 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
-/* @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
 :root {
   --light-base: hsl(0, 0%, 95%);
   --dark-base: hsl(0, 0%, 10%);
   --layout-shadow: 0px 0px 8px hsla(0, 0%, 10%, 10%);
+  
+  --primary-base: hsl(101, 21%, 51%);
+  --primary-hover: hsl(102, 22%, 45%);
 
-  --primary-base: hsl(237, 90%, 61%);
-  --primary-hover: hsl(237, 72%, 54%);
+  --primary-base: #0f3144;
+  --primary-hover: #44616f;
+  --primary-hover-02: #8aabbb;
+
+  --black-base: hsl(0, 0%, 10%);
 
   --grey-base: hsl(237, 0%, 40%);
 
   --layout-font: 'Satoshi-Variable', sans-serif;
+  --layout-font: 'Open Sans', sans-serif;
 
-  --navbar-height: 72px;
+  --navbar-height: 108px;
 }
 
 *,
@@ -27,7 +34,7 @@
 body {
   background: var(--light-base);
   font-family: var(--layout-font);
-  font-weight: 500;
+  /* font-weight: 500; */
 
 }
 
@@ -41,7 +48,7 @@ a {
 }
 
 :is(input, select, textarea) {
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 :is(input, select, textarea) {

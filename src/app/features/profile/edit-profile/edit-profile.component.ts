@@ -16,7 +16,7 @@ import { User } from "src/app/core/models/User";
   styleUrls: ["./edit-profile.component.css"],
 })
 export class EditProfileComponent implements OnInit {
-  user: User = new User("", "", "", 0);
+  user: User = new User("necijcn", "", "", 0, null);
 
   constructor() {}
 

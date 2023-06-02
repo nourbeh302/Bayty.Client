@@ -6,8 +6,9 @@ button {
 
 :is(button, .button) {
     padding: 12px 24px;
-    border-radius: 2px;
+    border-radius: 4px;
     text-align: center;
+    font-weight: 500;
 }
 
 .button-full-width {
@@ -16,12 +17,20 @@ button {
 
 /*#region Primary Button  */
 .button-primary {
-    background: var(--primary-base);
-    color: white;
+    background: white;
+    border: 2px solid var(--primary-base);
+    box-shadow: 0 0 0 calc(1px / 32) var(--primary-base);
+    color: var(--primary-base);
 }
 
 .button-primary:hover {
-    background: var(--primary-hover);
+    background: var(--primary-base);
+    color: var(--light-base);
+}
+
+.button-primary:hover {
+    background: radial-gradient(farthest-corner at 0 0, var(--primary-base), var(--primary-hover));
+    color: var(--light-base);
 }
 
 /*#endregion */
@@ -29,7 +38,8 @@ button {
 /*#region Secondary Button  */
 .button-secondary {
     background: white;
-    border: 1px solid var(--primary-base);
+    border: 2px solid var(--primary-base);
+    box-shadow: 0 0 0 calc(1px / 32) var(--primary-base);
     color: var(--primary-base);
 }
 
@@ -43,10 +53,12 @@ button {
 .button-tertiary {
     background: white;
     color: var(--primary-base);
+    font-size: 15px;
 }
 
 .button-tertiary:hover {
     background: var(--light-base);
+    color: var(--primary-hover-02);
 }
 
 /*#endregion */
@@ -55,7 +67,7 @@ button {
 .button-icon {
     width: 48px;
     height: 48px;
-    border-radius: 2px;
+    border-radius: 4px;
     display: grid;
     place-content: center;
     background: white;
