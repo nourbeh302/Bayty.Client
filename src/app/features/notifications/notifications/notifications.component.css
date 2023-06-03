@@ -1,0 +1,42 @@
+.page-wrapper {
+    padding-block: 32px;
+}
+
+.notifications-container {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+
+    gap: 16px;
+}
+
+.notification-item {
+    padding: 24px;
+    background: white;
+    border-radius: 4px;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.notification-item::before {
+    content: "";
+    width: 4px;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.notification-item.new-message::before {
+    background: var(--pending-base);
+}
+
+.notification-item.new-buyer::before {
+    background: var(--success-base);
+}
+
+.notification-item.cancelled-transaction::before {
+    background: var(--error-base);
+}

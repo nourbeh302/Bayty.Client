@@ -13,8 +13,12 @@
   --primary-hover: #44616f;
   --primary-hover-02: #8aabbb;
 
-  --black-base: hsl(0, 0%, 10%);
+  --error-base: hsl(0, 57%, 58%);
+  --success-base: hsl(120, 31%, 56%);
+  --draft-base: hsl(0, 0%, 42%);
+  --pending-base: hsl(202, 65%, 56%);
 
+  --black-base: hsl(0, 0%, 10%);
   --grey-base: hsl(237, 0%, 40%);
 
   --layout-font: 'Satoshi-Variable', sans-serif;

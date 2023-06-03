@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="chat-wrapper">
+
+        <div class="chat-aside conversations">
+            <h1 class="chat-heading">Chats</h1>
+            <div class="conversations-group" *ngFor="let user of users">
+                <div class="conversation-item">
+                    <div class="profile-avatar"></div>
+                    <div class="item-text">
+                        <div class="profile-name">{{ user.firstName }} {{ user.lastName }}</div>
+                        <div class="last-active">Last active: 30/02/2023</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-messages">
+            <div class="chat-avatar">
+                <div class="profile-avatar"></div>
+                <h2>Hugo Sanchez</h2>
+            </div>
+            <div class="messages-group" *ngFor="let message of messages">
+                <div class="message-item sender">
+                    <p>Hello</p>
+                    <!-- <small>{{ message.createdAt }}</small> -->
+                </div>
+                <div class="message-item receiver">
+                    <p>World</p>
+                </div>
+            </div>
+        </div>
+        <div class="chat-input">
+            <div class="form-field"><input type="text" placeholder="Enter your message here" ((keypress))="sendMessage()"></div>
+        </div>
+    </div>
+</div>

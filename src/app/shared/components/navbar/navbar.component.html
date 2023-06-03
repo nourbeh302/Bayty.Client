@@ -7,10 +7,10 @@
     </div>
     <div class="navbar-right" *ngIf="isUserLoggedIn; else signedOutBlock">
       <div class="navbar-links">
-        <a class="button-icon notification-button">
+        <a class="button-icon notification-button" routerLink="notifications">
           <i class="icon icon-ic_fluent_alert_20_regular"></i>
         </a>
-        <a class="button-icon mail-button">
+        <a class="button-icon mail-button" routerLink="chat">
           <i class="icon icon-ic_fluent_chat_20_regular"></i>
         </a>
         <a class="button-icon payment-button" routerLink="payment">

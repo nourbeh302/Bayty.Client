@@ -28,27 +28,24 @@
 }
 
 .chip-cancelled {
-    --red-base: rgb(244, 72, 72);
     color: var(--light-base);
-    background: var(--red-base);
+    background: var(--error-base);
 }
 
 .chip-completed {
-    --green-base: rgb(108, 177, 108);
     color: var(--light-base);
-    background: var(--green-base);
+    background: var(--success-base);
+
 }
 
 .chip-pending {
-    --blue-base: var(--primary-base);
     color: var(--light-base);
-    background: var(--blue-base);
+    background: var(--pending-base);
 }
 
 .chip-draft {
-    --grey-base: rgb(107, 107, 107);
     color: var(--light-base);
-    background: var(--grey-base);
+    background: var(--draft-base);
 }
 
 @media (width < 625px) {
