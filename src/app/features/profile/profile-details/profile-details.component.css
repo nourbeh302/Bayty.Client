@@ -69,11 +69,6 @@
   color: var(--primary-base);
 }
 
-h1 {
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
 .profile-card h3 {
   font-weight: 500;
   color: rgb(100, 100, 100);

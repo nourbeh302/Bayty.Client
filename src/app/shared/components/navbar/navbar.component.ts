@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "app-navbar",
@@ -8,11 +9,18 @@ import { Component, OnInit } from "@angular/core";
 export class NavbarComponent implements OnInit {
   isUserLoggedIn: boolean = false;
   isNavbarCollapseToggled: boolean = false;
+  
+  currentLang = 'en';
 
   toggleNavbarCollapse: Function = () =>
     (this.isNavbarCollapseToggled = !this.isNavbarCollapseToggled);
 
-  constructor() {}
+  constructor(public translate: TranslateService) { }
 
-  ngOnInit(): void {}
+  switchLanguage() {
+    this.currentLang = this.currentLang === 'en' ? 'ar' : 'en';
+    this.translate.use(this.currentLang);
+  }
+
+  ngOnInit(): void { }
 }

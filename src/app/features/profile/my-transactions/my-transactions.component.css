@@ -19,10 +19,14 @@
     gap: 32px;
 }
 
+.transactions-header>*:last-child {
+    margin-left: auto;
+}
+
 @media (width < 625px) {
     .transactions-header {
         flex-direction: column;
-        align-items: start;
+        align-items: flex-start;
         gap: 16px;
         display: none;
     }

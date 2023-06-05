@@ -6,16 +6,19 @@ import { Component } from "@angular/core";
   styleUrls: ["./create-advertisement.component.css"],
 })
 export class CreateAdvertisementComponent {
-  imageContainers: number[] = [];
+  images: number[] = [];
 
   addImage(): void {
-    this.imageContainers.push(1);
+    this.images.push(1);
   }
 
   fileToUpload: File | null = null;
 
   onFileSelected(event: any) {
     this.fileToUpload = event.target.files.item(0);
+    console.log(event.target.files.item(0));
+    
+    this.images.push(event.target.files.item(0));
   }
 
   onSubmit(e: any) {

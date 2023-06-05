@@ -8,6 +8,7 @@ import { RegisterComponent } from "./register/register.component";
 import { VerifyEmailComponent } from "./verify-email/verify-email.component";
 import { VerifyPhoneNumberComponent } from "./verify-phone-number/verify-phone-number.component";
 import { CreateEnterpriseComponent } from './create-enterprise/create-enterprise.component';
+import { RegisterationCompletedComponent } from './registeration-completed/registeration-completed.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { CreateEnterpriseComponent } from './create-enterprise/create-enterprise
     VerifyPhoneNumberComponent,
     VerifyPhoneNumberComponent,
     CreateEnterpriseComponent,
+    RegisterationCompletedComponent,
   ],
   imports: [CommonModule, AuthRoutingModule, ReactiveFormsModule],
 })

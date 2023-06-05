@@ -1,8 +1,9 @@
 <div class="navbar-wrapper">
-  <nav class="navbar container">
+  <nav class="navbar container" [class.rtl]="currentLang === 'ar'">
     <div class="navbar-brand navbar-left">
       <a routerLink="">
-        <img src="/assets/images/bayty.svg" alt="">
+        <img *ngIf="currentLang == 'en'" src="/assets/images/bayty.svg" alt="">
+        <img *ngIf="currentLang == 'ar'" src="/assets/images/bayty-ar.svg" alt="">
       </a>
     </div>
     <div class="navbar-right" *ngIf="isUserLoggedIn; else signedOutBlock">
@@ -23,7 +24,7 @@
         <button class="button-icon menu-button navbar-toggler" (click)="toggleNavbarCollapse()">
           <i class="icon icon-ic_fluent_clock_20_regular"></i>
         </button>
-        
+
       </div>
       <div class="navbar-cta">
         <button class="button button-secondary" (click)="isUserLoggedIn = !isUserLoggedIn">Sign out</button>
@@ -37,17 +38,23 @@
           </button>
         </div>
         <div class="navbar-cta">
-          <button class="button button-tertiary" routerLink="advertisement/create">Post</button>
-          <a class="button button-tertiary" routerLink="advertisement/search">Properties</a>
-          <a class="button button-tertiary" routerLink="privacy">Privacy</a>
+          <button class="button button-tertiary" routerLink="advertisement/create">{{ "Post" | translate }}</button>
+          <a class="button button-tertiary" routerLink="advertisement/search">{{ "Properties" | translate }}</a>
+          <a class="button button-tertiary" routerLink="privacy">{{ "Privacy" | translate }}</a>
           <span></span>
-          <button class="button button-tertiary" routerLink="login">Login</button>
-          <button class="button button-primary" (click)="isUserLoggedIn = !isUserLoggedIn" routerLink="register">Get Started</button>
+          <button class="button button-icon" (click)="switchLanguage()">
+            <img *ngIf="currentLang == 'en'" width="24" height="24" src="../../../../assets/icons/eg.svg" alt="arabic">
+            <img *ngIf="currentLang == 'ar'" width="24" height="24" src="../../../../assets/icons/us.svg" alt="english">
+          </button>
+          <button class="button button-tertiary" routerLink="login">{{
+            "Login" | translate }}</button>
+          <button class="button button-primary" (click)="isUserLoggedIn = !isUserLoggedIn" routerLink="register">{{
+            "Get Started" | translate }}</button>
         </div>
       </div>
     </ng-template>
   </nav>
-  
+
   <div class="navbar-collapse" *ngIf="isNavbarCollapseToggled">
     <a class="button-icon notification-button" (click)="toggleNavbarCollapse()">
       <i class="icon icon-ic_fluent_alert_20_regular"></i>

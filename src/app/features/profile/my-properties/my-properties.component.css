@@ -1,0 +1,92 @@
+.page-wrapper {
+    padding-block: 32px;
+}
+
+.grid-container {
+    margin-top: 32px;
+    display: grid;
+    grid-area: results;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+}
+
+.grid-item {
+    border-radius: 4px;
+    overflow: hidden;
+    background: white;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    height: 360px;
+
+    position: relative;
+    box-shadow: var(--layout-shadow);
+}
+
+.grid-item .grid-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition: scale 250ms ease-in;
+}
+
+.grid-item:hover .grid-hero img {
+    scale: 105%;
+}
+
+.grid-item .grid-body {
+    padding: 32px 16px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    background: rgba(255, 255, 255, 0.533);
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    display: flex;
+}
+
+.grid-body small:first-of-type {
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.option {
+    position: absolute;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 4px;
+    top: -16px;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 14px;
+}
+
+.option.sale {
+    background: var(--buy-base);
+}
+
+.option.rent {
+    background: var(--rent-base);
+}
+
+.body-cta {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    background: var(--primary-base);
+    color: white;
+}
+
+.body-cta:hover {
+    background: var(--primary-hover);
+}
+
+@media (width < 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,35 @@
+.page-wrapper {
+    padding-block: 32px;
+}
+
+.card {
+    margin-top: 32px;
+    background: white;
+    padding: 32px;
+    box-shadow: var(--layout-shadow);
+    border-radius: 8px;
+}
+
+summary+p {
+    margin-top: 32px;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+article>div:first-child {
+    margin-top: 32px;
+}
+
+article ul li {
+    list-style: circle;
+    margin-left: 20px;
+    margin-block: 4px;
+}
+
+article strong {
+    margin-bottom: 8px;
+}

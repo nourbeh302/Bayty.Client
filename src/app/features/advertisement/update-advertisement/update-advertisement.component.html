@@ -1,7 +1,8 @@
 <div class="page-wrapper container">
-    <h1>List new properties</h1>
+    <h1>Update property</h1>
 
-    <form class="form" (submit)="onSubmit($event)">
+    <!-- <form class="form" (submit)="onSubmit($event)"> -->
+    <form class="form">
         <div class="form-group">
             <div class="form-field">
                 <label for="state">Property State</label>
@@ -42,25 +43,7 @@
                 <input type="text" placeholder="Fully furnished">
             </div>
 
-
-            <div class="form-field">
-                <label class="imageUrl-container" for="imageUrl">
-                    <i class="icon icon-ic_fluent_image_20_regular"></i>
-                    <div><span>Upload an image</span> or drag and drop</div>
-                    <div>Image size up to 20MB</div>
-                    <div>760px minimum width</div>
-                </label>
-                <input type="file" name="imageUrl" id="imageUrl">
-            </div>
-            
-            <input type="file" name="imageUrl" id="imageUrl" (change)="onFileSelected($event)">
-
-            <img width="256" height="256" src="https://images.unsplash.com/photo-1532323544230-7191fd51bc1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80" alt="">
-            <div class="image-group" *ngFor="let image of images">
-                <img width="256" height="256" [src]="fileToUpload?.name" alt="">
-            </div>
-
-            <button type="submit" class="button button-primary">Add property</button>
+            <button type="submit" class="button button-primary">Save Changes</button>
 
         </div>
 

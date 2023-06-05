@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { MyTransactionsComponent } from "./my-transactions/my-transactions.component";
 import { MyVCardComponent } from "./my-vcard/my-vcard.component";
 import { TransactionItemComponent } from './my-transactions/components/transaction-item/transaction-item.component';
+import { MyPropertiesComponent } from './my-properties/my-properties.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { TransactionItemComponent } from './my-transactions/components/transacti
     MyTransactionsComponent,
     MyVCardComponent,
     TransactionItemComponent,
+    MyPropertiesComponent,
   ],
   imports: [CommonModule, ProfileRoutingModule, ReactiveFormsModule],
 })

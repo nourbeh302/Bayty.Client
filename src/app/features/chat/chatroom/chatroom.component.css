@@ -23,6 +23,20 @@
     gap: 32px;
 }
 
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--primary-base), var(--primary-hover-02));
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgb(207, 207, 207);
+    border-radius: 8px;
+}
+
 .chat-wrapper>div {
     border-radius: 4px;
 
@@ -119,8 +133,8 @@
 .messages-group {
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    align-items: start;
+    justify-content: flex-start;
+    align-items: flex-start;
     gap: 8px;
     padding: 16px;
 }

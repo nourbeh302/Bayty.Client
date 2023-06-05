@@ -1,5 +1,5 @@
 .search-ads {
-    padding-block: 48px;
+    padding-block: 32px;
 }
 
 .search-ads h1 {
@@ -11,8 +11,8 @@
     grid-template-areas:
         "filter results results results"
         "filter results results results"
-        "filter  results results results";
-    grid-template-columns: 2fr 5fr;
+        "filter results results results";
+    grid-template-columns: 1fr 2fr;
     gap: 32px;
 }
 
@@ -60,8 +60,8 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    
-    background: rgba(255, 255, 255, 0.29);
+
+    background: rgba(255, 255, 255, 0.533);
     box-shadow: 0 4px 32px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -76,7 +76,6 @@
 
 .option {
     position: absolute;
-    background: var(--primary-base);
     color: white;
     padding: 6px 16px;
     border-radius: 4px;
@@ -87,9 +86,12 @@
     font-size: 14px;
 }
 
+.option.sale {
+    background: var(--buy-base);
+}
+
 .option.rent {
-    background: purple;
-    color: white;
+    background: var(--rent-base);
 }
 
 .body-cta {
@@ -129,6 +131,7 @@
     background: var(--primary-base);
     color: white;
 }
+
 /*#endregion */
 
 

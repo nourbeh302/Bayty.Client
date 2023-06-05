@@ -1,19 +1,11 @@
 <div class="home-filter">
-    <!-- <div class="control-group">
-        <button autofocus class="filter-control">Buy</button>
-        <button class="filter-control">Rent</button>
-    </div> -->
 
-    <div class="toggle-switch">
-        <label class="toggle-option">
-          <input type="radio" name="toggle" value="buy" class="toggle-radio" checked>
-          <span class="toggle-label">Buy</span>
-        </label>
-        <label class="toggle-option">
-          <input type="radio" name="toggle" value="rent" class="toggle-radio">
-          <span class="toggle-label">Rent</span>
-        </label>
-      </div>
+    <span class="state">{{ isRented ? "Rent" : "Buy" }}</span>
+    <div class="toggle-container">
+        <input type="checkbox" (change)="isRented = !isRented" id="toggle" class="toggle-checkbox" />
+        <label for="toggle" class="toggle-label"></label>
+    </div>
+
 
     <div class="c-form-group">
         <div class="c-form-row">

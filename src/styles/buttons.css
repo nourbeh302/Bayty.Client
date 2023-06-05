@@ -68,14 +68,16 @@ button {
     width: 48px;
     height: 48px;
     border-radius: 4px;
-    display: grid;
-    place-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: white;
 }
 
 .button-icon i {
-    display: grid;
-    place-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .button-icon:hover {

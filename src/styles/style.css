@@ -5,7 +5,7 @@
   --light-base: hsl(0, 0%, 95%);
   --dark-base: hsl(0, 0%, 10%);
   --layout-shadow: 0px 0px 8px hsla(0, 0%, 10%, 10%);
-  
+
   --primary-base: hsl(101, 21%, 51%);
   --primary-hover: hsl(102, 22%, 45%);
 
@@ -18,11 +18,14 @@
   --draft-base: hsl(0, 0%, 42%);
   --pending-base: hsl(202, 65%, 56%);
 
+  --buy-base: hsl(198, 90%, 45%);
+  --rent-base: hsl(249, 58%, 58%);
+
   --black-base: hsl(0, 0%, 10%);
   --grey-base: hsl(237, 0%, 40%);
 
-  --layout-font: 'Satoshi-Variable', sans-serif;
-  --layout-font: 'Open Sans', sans-serif;
+  /* --layout-font: 'Open Sans', 'IBM Plex Sans Arabic', sans-serif; */
+  --layout-font: 'Open Sans', 'Abd Elrady Pro Regular', sans-serif;
 
   --navbar-height: 108px;
 }
@@ -61,6 +64,14 @@ a {
 
 .container {
   padding-inline: 16px;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary {
+  list-style: none;
 }
 
 @media (width > 767px) {

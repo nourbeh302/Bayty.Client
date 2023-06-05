@@ -10,6 +10,10 @@
   align-items: center;
 }
 
+.navbar.rtl {
+  direction: rtl;
+}
+
 .navbar-left {
   flex-grow: 2;
 }

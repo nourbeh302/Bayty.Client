@@ -5,4 +5,6 @@ import { Component } from "@angular/core";
   templateUrl: "./home-filter.component.html",
   styleUrls: ["./home-filter.component.css"],
 })
-export class HomeFilterComponent {}
+export class HomeFilterComponent {
+  isRented: boolean = false
+}

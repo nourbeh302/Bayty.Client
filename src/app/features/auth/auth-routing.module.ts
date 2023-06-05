@@ -6,6 +6,7 @@ import { RegisterComponent } from "./register/register.component";
 import { VerifyEmailComponent } from "./verify-email/verify-email.component";
 import { VerifyPhoneNumberComponent } from "./verify-phone-number/verify-phone-number.component";
 import { CreateEnterpriseComponent } from "./create-enterprise/create-enterprise.component";
+import { RegisterationCompletedComponent } from "./registeration-completed/registeration-completed.component";
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: "verifyEmail", component: VerifyEmailComponent },
   { path: "verifyPhoneNumber", component: VerifyPhoneNumberComponent },
   { path: "createEnterprise", component: CreateEnterpriseComponent },
+  { path: "registerationCompleted", component: RegisterationCompletedComponent },
 ];
 
 @NgModule({
