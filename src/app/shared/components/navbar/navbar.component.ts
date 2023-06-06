@@ -34,10 +34,9 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit(): void {
-
     this.setColorScheme('light');
-
   }
+  
   setColorScheme(arg0: string) {
     this.themeService.setColorScheme(arg0);
   }

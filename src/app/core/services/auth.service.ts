@@ -14,21 +14,18 @@ export class AuthService {
 
   constructor(private router: Router, private _http: HttpClient) { }
 
-  register(account: Account) :Observable <any> {
+  register(account: Account): Observable<any> {
     // this._http.post<any>('https://localhost:7094/account/register', account) 
     return this._http.post<any>('https://localhost:7094/account/register', account)
-    
+
   }
 
-
-  
-  login(emailOrPhone: string, password: string) {
-
+  login(emailOrPhone: string, password: string, rememberMe: boolean) {
     return this._http.post<any>('https://localhost:7094/account/login', {
-      email:emailOrPhone,
-      password: password
+      email: emailOrPhone,
+      password: password,
+      rememberMe
     })
-
   }
 
   logout() {
@@ -41,7 +38,7 @@ export class AuthService {
   }
 
   verifyEmailAddress() { }
-  
+
   verifyPhoneNumber() { }
 
 }

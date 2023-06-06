@@ -28,3 +28,18 @@ form {
   cursor: not-allowed;
   background: grey;
 }
+
+.checkbox {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.checkbox input {
+  padding: 0;
+  width: max-content;
+}
+
+.checkbox label {
+  margin-right: 16px;
+}

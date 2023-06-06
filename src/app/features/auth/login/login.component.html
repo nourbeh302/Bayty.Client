@@ -17,7 +17,8 @@
           placeholder="Your secret password">
       </div>
 
-      <div class="form-field">
+
+      <div class="checkbox">
         <label for="rememberMe">Remember Me</label>
         <input id="rememberMe" type="checkbox" formControlName="rememberMe">
       </div>
@@ -28,7 +29,7 @@
       </div>
     </div>
 
-    <button type="submit" [disabled]="loginForm.invalid" >Login</button>
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
 
   </form>
 </div>

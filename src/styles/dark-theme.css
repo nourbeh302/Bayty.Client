@@ -17,7 +17,11 @@ body.light-mode {
 
 .dark-mode .navbar .navbar-links {
     background-color: #dfe6e9;
+    color: #fff;
+}
 
+.dark-mode .home-filter {
+    background-color: #222;
     color: #fff;
 }
 

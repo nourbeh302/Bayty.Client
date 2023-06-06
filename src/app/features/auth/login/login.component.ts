@@ -7,6 +7,7 @@ import { User } from "src/app/core/models/User";
 import { AuthService } from "src/app/core/services/auth.service";
 import { Login } from "src/app/core/models/Login";
 import { HttpInterceptor } from "@angular/common/http";
+import { of } from "rxjs";
 
 @Component({
   selector: "app-login",
@@ -14,72 +15,36 @@ import { HttpInterceptor } from "@angular/common/http";
   styleUrls: ["./login.component.css"],
 })
 export class LoginComponent implements OnInit {
-  user: Login = new Login("", "");
 
-  constructor(private authService: AuthService) {}
+  user: Login = new Login("", "", false);
 
+  constructor(private authService: AuthService) { }
 
-  // userList: User[] = [
-  //   {
-  //     email: "nourbeh@gm.com",
-  //     password: "12345678",
-  //     profileImage: "",
-  //     firstName: "Nour",
-  //     lastName: "Samir",
-  //     phoneNumber: "0100 000 0000",
-  //     address: "",
-  //     age: 21,
-  //   },
-  //   {
-  //     role: Role.User,
-  //     email: "sallygmal@gm.com",
-  //     password: "sosojimmy",
-  //     profileImage: "",
-  //     firstName: "Sally",
-  //     lastName: "Samal",
-  //     phoneNumber: "0110 000 0000",
-  //     gender: Gender.Female,
-  //     address: "",
-  //     age: 32,
-  //   },
-  // ];
-
-  name: FormControl = new FormControl();
-  nameState: string = "";
+  ngOnInit(): void { }
 
   loginForm: FormGroup = new FormGroup({
     email: new FormControl(this.user.emailOrPhone, Validators.required),
     password: new FormControl(this.user.password, Validators.required),
+    rememberMe: new FormControl(this.user.rememberMe),
   });
 
 
-  ngOnInit(): void {}
-
-  validateUser: Function = (email: string, password: string): void => {
-    // const loggedInUser = this.userList.find(
-    //   (u) =>
-    //     this.loginForm.value.email == u.email &&
-    //     this.loginForm.value.password == u.password
-    // );
-
-    // console.log(loggedInUser ? "valid" : "invalid");
-  };
-
-  get email() {
-    return this.loginForm.get("email");
-  }
-  
-  get password() {
-    return this.loginForm.get("password");
-  }
-  // get rememberMe(){
-  //   return this.loginForm.get("rememberMe")
-  // }
+  get email() { return this.loginForm.get("email"); }
+  get password() { return this.loginForm.get("password"); }
+  get rememberMe() { return this.loginForm.get("rememberMe") }
 
   login() {
-    this.authService.login(this.email?.value, this.password?.value)
-    .subscribe(next => {
-      
-    }, error => console.log(error));
+    console.log(this.email?.value, this.password?.value, this.rememberMe?.value);
+
+    this.authService.login(this.email?.value, this.password?.value, this.rememberMe?.value)
+      .subscribe(next => {
+        console.log(next)
+      }, error => console.log(error));
+    // of(this.authService.login(this.email?.value, this.password?.value, this.rememberMe?.value)
+    // ).subscribe({
+    //   next: (v) => console.log({v: v}),
+    //   error: (e) => console.error({e: e}),
+    //   complete: () => console.info('complete')
+    // })
   }
 }

@@ -38,11 +38,14 @@
   box-sizing: border-box !important;
 }
 
+/* html {
+  color-scheme: dark light;
+} */
+
 body {
   background: var(--light-base);
   font-family: var(--layout-font);
   /* font-weight: 500; */
-
 }
 
 li {
