@@ -46,6 +46,11 @@
             <img *ngIf="currentLang == 'en'" width="24" height="24" src="../../../../assets/icons/eg.svg" alt="arabic">
             <img *ngIf="currentLang == 'ar'" width="24" height="24" src="../../../../assets/icons/us.svg" alt="english">
           </button>
+          <button id="darkMode" class="dark-theme" (click)="toggleDarkMode()">Dark</button>
+          <!-- <label class="switch">
+            <input type="checkbox">
+            <span class="slider" (click)="toggleDarkMode()"></span>
+          </label> -->
           <button class="button button-tertiary" routerLink="login">{{
             "Login" | translate }}</button>
           <button class="button button-primary" (click)="isUserLoggedIn = !isUserLoggedIn" routerLink="register">{{

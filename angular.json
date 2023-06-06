@@ -30,9 +30,10 @@
               "src/styles/style.css",
               "src/styles/typography.css",
               "src/styles/forms.css",
-              "src/styles/buttons.css"
+              "src/styles/buttons.css",
+              "src/styles/dark-theme.css"
             ],
-            "scripts": []
+            "scripts": ["./node_modules/angular-dark-mode/angular-dark-mode.js"]
           },
           "configurations": {
             "production": {
@@ -97,9 +98,10 @@
               "src/styles/style.css",
               "src/styles/typography.css",
               "src/styles/forms.css",
-              "src/styles/buttons.css"
+              "src/styles/buttons.css",
+              "src/styles/dark-theme.css"
             ],
-            "scripts": []
+            "scripts": ["./node_modules/angular-dark-mode/angular-dark-mode.js"]
           }
         }
       }

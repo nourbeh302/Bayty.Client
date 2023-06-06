@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
+import { ThemeService } from "src/app/core/services/dark-mode.service";
 
 @Component({
   selector: "app-navbar",
@@ -9,18 +10,35 @@ import { TranslateService } from "@ngx-translate/core";
 export class NavbarComponent implements OnInit {
   isUserLoggedIn: boolean = false;
   isNavbarCollapseToggled: boolean = false;
+  theme: object = {
+    dark: "Dark",
+    light: "Light"
+  }
   
   currentLang = 'en';
 
   toggleNavbarCollapse: Function = () =>
     (this.isNavbarCollapseToggled = !this.isNavbarCollapseToggled);
 
-  constructor(public translate: TranslateService) { }
+  constructor(public translate: TranslateService, private themeService: ThemeService) { }
 
   switchLanguage() {
     this.currentLang = this.currentLang === 'en' ? 'ar' : 'en';
     this.translate.use(this.currentLang);
   }
 
-  ngOnInit(): void { }
+
+  toggleDarkMode() {
+    this.themeService.toggleColorScheme();
+  }
+
+
+  ngOnInit(): void {
+
+    this.setColorScheme('light');
+
+  }
+  setColorScheme(arg0: string) {
+    this.themeService.setColorScheme(arg0);
+  }
 }
