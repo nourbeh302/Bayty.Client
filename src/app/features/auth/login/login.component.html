@@ -28,8 +28,8 @@
         <a routerLink="/register">Create new one</a>
       </div>
     </div>
-
-    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+    <!-- {{isLoggedIn()}} -->
+    <button type="submit" (click)="isLoggedIn()" (click)="login()" [disabled]="loginForm.invalid">Login</button>
 
   </form>
 </div>

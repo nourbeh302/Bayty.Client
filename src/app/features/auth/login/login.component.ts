@@ -8,6 +8,7 @@ import { AuthService } from "src/app/core/services/auth.service";
 import { Login } from "src/app/core/models/Login";
 import { HttpInterceptor } from "@angular/common/http";
 import { of } from "rxjs";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-login",
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   user: Login = new Login("", "", false);
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void { }
 
@@ -38,13 +39,33 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(this.email?.value, this.password?.value, this.rememberMe?.value)
       .subscribe(next => {
+        localStorage.setItem("accessToken", next["accessToken"]);
+        localStorage.setItem("accessTokenLifeTime", next["accessTokenLifeTime"]);
+        localStorage.setItem("isAuthenticated", next["isAuthenticated"]);
+        localStorage.setItem("refreshToken", next["refreshToken"]);
+        localStorage.setItem("refreshTokenLifeTime", next["refreshTokenLifeTime"]);
         console.log(next)
+
       }, error => console.log(error));
+
+      
+      if(this.isLoggedIn()){
+          this.router.navigateByUrl("");
+      }
+      else{
+        console.log("Access Denied");
+      }
     // of(this.authService.login(this.email?.value, this.password?.value, this.rememberMe?.value)
     // ).subscribe({
     //   next: (v) => console.log({v: v}),
     //   error: (e) => console.error({e: e}),
     //   complete: () => console.info('complete')
+
     // })
+
+ 
+  }
+  isLoggedIn(){
+    return this.authService.isLoggedIn();
   }
 }

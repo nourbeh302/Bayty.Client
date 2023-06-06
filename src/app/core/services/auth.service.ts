@@ -21,11 +21,17 @@ export class AuthService {
   }
 
   login(emailOrPhone: string, password: string, rememberMe: boolean) {
-    return this._http.post<any>('https://localhost:7094/account/login', {
-      email: emailOrPhone,
-      password: password,
-      rememberMe
-    })
+    try {
+      return this._http.post<any>('https://localhost:7094/account/login', {
+        email: emailOrPhone,
+        password: password,
+        rememberMe
+      })
+      
+    }
+    catch {
+
+    }
   }
 
   logout() {
@@ -34,7 +40,14 @@ export class AuthService {
   }
 
   isLoggedIn() {
-    return this.loggedIn.getValue();
+    var state = localStorage.getItem("accessToken");
+    if (state) {
+      return true;
+    }
+    else {
+      return false;
+    }
+    // return (state!.length > 0)  
   }
 
   verifyEmailAddress() { }
