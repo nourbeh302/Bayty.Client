@@ -7,6 +7,7 @@ import {
   Validators,
 } from "@angular/forms";
 import { Gender } from "src/app/core/enums/Gender";
+import { Account } from "src/app/core/models/Account";
 
 import { User } from "src/app/core/models/User";
 
@@ -16,7 +17,7 @@ import { User } from "src/app/core/models/User";
   styleUrls: ["./edit-profile.component.css"],
 })
 export class EditProfileComponent implements OnInit {
-  user: User = new User("necijcn", "", "", 0, null);
+  user: Account = new Account("", "", "","","","",0,"","",0);
 
   constructor() {}
 
@@ -60,7 +61,7 @@ export class EditProfileComponent implements OnInit {
     ) /* ^01[0125][0-9]{8}$ Phone number regex */,
     address: new FormControl(this.user.address),
     age: new FormControl(this.user.age),
-    gender: new FormControl(this.user.gender),
+    // gender: new FormControl(this.user.gender),
   });
 
   get firstName() {

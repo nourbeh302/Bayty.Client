@@ -11,6 +11,7 @@ import { Gender } from "src/app/core/enums/Gender";
 import { Role } from "src/app/core/enums/Role";
 
 import { User } from "src/app/core/models/User";
+import { Account } from "src/app/core/models/Account";
 
 @Component({
   selector: "app-register",
@@ -18,7 +19,7 @@ import { User } from "src/app/core/models/User";
   styleUrls: ["./register.component.css"],
 })
 export class RegisterComponent implements OnInit {
-  user: User = new User("hishcdij", "", "", 0, null);
+  user: Account = new Account("", "", "","","","",0,"","",0);
 
   genderReference = Gender;
   enumKeys: string[] = [];
@@ -72,7 +73,7 @@ export class RegisterComponent implements OnInit {
         // Validators.min(21),
       ])
     ),
-    gender: new FormControl(this.user.gender),
+    // gender: new FormControl(this.user.gender),
   });
 
   get firstName() {
@@ -106,13 +107,16 @@ export class RegisterComponent implements OnInit {
   register() {
     // e.preventDefault();
     // 
-    this.user = new User(
-      this.firstName?.value,
-      this.lastName?.value,
-      this.age?.value,
-      this.gender.value
-      );
-      this._authService.register(this.user);
+    // this.user = new User(
+    //   this.firstName?.value,
+    //   this.lastName?.value,
+    //   this.age?.value,
+    //   this.gender.value
+    //   );
+      this._authService.register(this.registerForm.value)
+      .subscribe(next => {
+        console.log(next);
+      }, error => console.log(error));    
     // console.log(this.registerForm.value);
   }
 

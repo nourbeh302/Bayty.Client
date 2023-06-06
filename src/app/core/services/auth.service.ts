@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../models/User';
+import { Account } from '../models/Account';
 
 @Injectable({
   providedIn: 'root'
@@ -13,18 +14,21 @@ export class AuthService {
 
   constructor(private router: Router, private _http: HttpClient) { }
 
-  register(user: User) {
-    this._http.post<any>('https://localhost:7094/account/register', user)
-      .subscribe(next => {
-        console.log(next);
-      }, error => {
-        console.log(error);
-      });
+  register(account: Account) :Observable <any> {
+    // this._http.post<any>('https://localhost:7094/account/register', account) 
+    return this._http.post<any>('https://localhost:7094/account/register', account)
+    
   }
+
+
   
-  login(userName: string, password: string) {
-    this.loggedIn.next(true)
-    this.router.navigate(['/home'])
+  login(emailOrPhone: string, password: string) {
+
+    return this._http.post<any>('https://localhost:7094/account/login', {
+      email:emailOrPhone,
+      password: password
+    })
+
   }
 
   logout() {

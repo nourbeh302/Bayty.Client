@@ -1,6 +1,6 @@
 <div class="form-layout">
 
-  <form [formGroup]="loginForm">
+  <form (ngSubmit)="login()" [formGroup]="loginForm">
     <h1>Login</h1>
     <p>Join the club for scouts where you can find your dream house</p>
 
@@ -17,13 +17,18 @@
           placeholder="Your secret password">
       </div>
 
+      <div class="form-field">
+        <label for="rememberMe">Remember Me</label>
+        <input id="rememberMe" type="checkbox" formControlName="rememberMe">
+      </div>
+
       <div class="login-cta">
         <span>Don't have account?&nbsp;</span>
         <a routerLink="/register">Create new one</a>
       </div>
     </div>
 
-    <button type="submit" [disabled]="loginForm.invalid" (click)="validateUser(email, password)">Login</button>
+    <button type="submit" [disabled]="loginForm.invalid" >Login</button>
 
   </form>
 </div>

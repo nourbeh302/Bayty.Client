@@ -2,8 +2,11 @@ import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Gender } from "src/app/core/enums/Gender";
 import { Role } from "src/app/core/enums/Role";
+import { Account } from "src/app/core/models/Account";
 import { User } from "src/app/core/models/User";
 import { AuthService } from "src/app/core/services/auth.service";
+import { Login } from "src/app/core/models/Login";
+import { HttpInterceptor } from "@angular/common/http";
 
 @Component({
   selector: "app-login",
@@ -11,57 +14,55 @@ import { AuthService } from "src/app/core/services/auth.service";
   styleUrls: ["./login.component.css"],
 })
 export class LoginComponent implements OnInit {
-  user: User = new User("", "", "", 0);
+  user: Login = new Login("", "");
 
-  userList: User[] = [
-    {
-      userId: "1",
-      role: Role.User,
-      email: "nourbeh@gm.com",
-      password: "12345678",
-      profileImage: "",
-      firstName: "Nour",
-      lastName: "Samir",
-      phoneNumber: "0100 000 0000",
-      gender: Gender.Male,
-      address: "",
-      age: 21,
-    },
-    {
-      userId: "2",
-      role: Role.User,
-      email: "sallygmal@gm.com",
-      password: "sosojimmy",
-      profileImage: "",
-      firstName: "Sally",
-      lastName: "Samal",
-      phoneNumber: "0110 000 0000",
-      gender: Gender.Female,
-      address: "",
-      age: 32,
-    },
-  ];
+  constructor(private authService: AuthService) {}
+
+
+  // userList: User[] = [
+  //   {
+  //     email: "nourbeh@gm.com",
+  //     password: "12345678",
+  //     profileImage: "",
+  //     firstName: "Nour",
+  //     lastName: "Samir",
+  //     phoneNumber: "0100 000 0000",
+  //     address: "",
+  //     age: 21,
+  //   },
+  //   {
+  //     role: Role.User,
+  //     email: "sallygmal@gm.com",
+  //     password: "sosojimmy",
+  //     profileImage: "",
+  //     firstName: "Sally",
+  //     lastName: "Samal",
+  //     phoneNumber: "0110 000 0000",
+  //     gender: Gender.Female,
+  //     address: "",
+  //     age: 32,
+  //   },
+  // ];
 
   name: FormControl = new FormControl();
   nameState: string = "";
 
   loginForm: FormGroup = new FormGroup({
-    email: new FormControl(this.user.email, Validators.required),
+    email: new FormControl(this.user.emailOrPhone, Validators.required),
     password: new FormControl(this.user.password, Validators.required),
   });
 
-  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {}
 
   validateUser: Function = (email: string, password: string): void => {
-    const loggedInUser = this.userList.find(
-      (u) =>
-        this.loginForm.value.email == u.email &&
-        this.loginForm.value.password == u.password
-    );
+    // const loggedInUser = this.userList.find(
+    //   (u) =>
+    //     this.loginForm.value.email == u.email &&
+    //     this.loginForm.value.password == u.password
+    // );
 
-    console.log(loggedInUser ? "valid" : "invalid");
+    // console.log(loggedInUser ? "valid" : "invalid");
   };
 
   get email() {
@@ -71,8 +72,14 @@ export class LoginComponent implements OnInit {
   get password() {
     return this.loginForm.get("password");
   }
+  // get rememberMe(){
+  //   return this.loginForm.get("rememberMe")
+  // }
 
   login() {
-    this.authService.login(this.email?.value, this.password?.value);
+    this.authService.login(this.email?.value, this.password?.value)
+    .subscribe(next => {
+      
+    }, error => console.log(error));
   }
 }
