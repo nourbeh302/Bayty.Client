@@ -7,9 +7,10 @@ import { ProfileModule } from "./profile/profile.module";
 import { PaymentModule } from "./payment/payment.module";
 import { ChatModule } from "./chat/chat.module";
 import { NotificationsModule } from "./notifications/notifications.module";
+import { AdminModule } from "./admin/admin.module";
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, FeaturesRoutingModule, AuthModule, ProfileModule, PaymentModule, ChatModule, NotificationsModule],
+  imports: [CommonModule, FeaturesRoutingModule, AuthModule, ProfileModule, PaymentModule, ChatModule, NotificationsModule, AdminModule],
 })
 export class FeaturesModule {}

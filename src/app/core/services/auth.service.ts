@@ -11,47 +11,70 @@ import { Account } from '../models/Account';
 export class AuthService {
 
   private loggedIn = new BehaviorSubject<boolean>(false);
+  private API = 'http://localhost:5034/account'
 
-  constructor(private router: Router, private _http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) { }
 
   register(account: Account): Observable<any> {
-    // this._http.post<any>('https://localhost:7094/account/register', account) 
-    return this._http.post<any>('https://localhost:7094/account/register', account)
-
+    // this.http.post<any>('http://localhost:5034/account/register', account) 
+    return this.http.post<any>(`${this.API}/register`, account)
   }
 
-  login(emailOrPhone: string, password: string, rememberMe: boolean) {
-    try {
-      return this._http.post<any>('https://localhost:7094/account/login', {
-        email: emailOrPhone,
-        password: password,
-        rememberMe
-      })
-      
-    }
-    catch {
+  async login(emailOrPhone: string, password: string, rememberMe: boolean) {
 
+    this.loggedIn.next(true)
+
+    try {
+      const response = await this.http.post<any>(`${this.API}/login`, {
+        email: emailOrPhone,
+        password,
+        rememberMe
+      }).subscribe((next) => this.saveCredentials(next));
+      return 200;
+    } catch (error: any) {
+      if (error.status === 400)
+        return 400;
+      return 500;
     }
+
+    return this.http.post<any>(`${this.API}/login`, {
+      email: emailOrPhone,
+      password: password,
+      rememberMe
+    }).subscribe(next => {
+      this.saveCredentials(next)
+      console.log(next['status'])
+    }, error => console.log(error['status']))
   }
 
   logout() {
     this.loggedIn.next(false)
+    this.clearCredentials()
     this.router.navigate(['/login'])
   }
 
   isLoggedIn() {
-    var state = localStorage.getItem("accessToken");
-    if (state) {
-      return true;
-    }
-    else {
-      return false;
-    }
-    // return (state!.length > 0)  
+    return this.loggedIn
   }
 
   verifyEmailAddress() { }
 
   verifyPhoneNumber() { }
+
+  saveCredentials(next: any) {
+    localStorage.setItem("accessToken", next["accessToken"]);
+    localStorage.setItem("accessTokenLifeTime", next["accessTokenLifeTime"]);
+    localStorage.setItem("isAuthenticated", next["isAuthenticated"]);
+    localStorage.setItem("refreshToken", next["refreshToken"]);
+    localStorage.setItem("refreshTokenLifeTime", next["refreshTokenLifeTime"]);
+  }
+
+  clearCredentials() {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("accessTokenLifeTime");
+    localStorage.removeItem("isAuthenticated");
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("refreshTokenLifeTime");
+  }
 
 }

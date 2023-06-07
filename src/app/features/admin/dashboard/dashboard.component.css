@@ -1,0 +1,56 @@
+.page-wrapper {
+    padding-block: 32px;
+}
+
+.grid-container {
+    margin-top: 32px;
+    display: grid;
+    grid-template-areas:
+        "users transactions"
+        "users transactions"
+        "requests transactions";
+    grid-auto-rows: auto;
+    gap: 32px;
+}
+
+.grid-item {
+    background: white;
+    box-shadow: var(--layout-shadow);
+    border-radius: 8px;
+    padding: 32px;
+    cursor: pointer;
+    transition: all 125ms ease-in;
+}
+
+.grid-item:hover {
+    scale: 102%;
+}
+
+.users {
+    grid-area: users;
+}
+
+.transactions {
+    grid-area: transactions;
+}
+
+.requests {
+    grid-area: requests;
+}
+
+.grid-item h1 {
+    margin-top: 32px;
+    display: inline-block;
+    font-size: 72px;
+}
+
+@media (width < 625px) {
+    .grid-container {
+        grid-template-areas:
+            "users"
+            "transactions"
+            "requests";
+
+        grid-auto-rows: auto;
+    }
+}

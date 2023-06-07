@@ -19,14 +19,9 @@ import { Account } from "src/app/core/models/Account";
   styleUrls: ["./register.component.css"],
 })
 export class RegisterComponent implements OnInit {
-  user: Account = new Account("", "", "","","","",0,"","",0);
+  user: Account = new Account("", "", "", "", "", "", 0, "", "", 0);
 
-  genderReference = Gender;
-  enumKeys: string[] = [];
-
-  constructor(private _authService : AuthService) {
-    this.enumKeys = Object.keys(this.genderReference);
-  }
+  constructor(private _authService: AuthService) { }
 
   registerForm: FormGroup = new FormGroup({
     profileImage: new FormGroup(this.user.profileImage),
@@ -97,27 +92,15 @@ export class RegisterComponent implements OnInit {
   get age() {
     return this.registerForm.get("age");
   }
-  get gender() {
-    return this.registerForm.get("gender")?.value;
-  }
 
   changeGender: Function = (event: any): void =>
     (this.registerForm.value.gender = event.target.value);
 
   register() {
-    // e.preventDefault();
-    // 
-    // this.user = new User(
-    //   this.firstName?.value,
-    //   this.lastName?.value,
-    //   this.age?.value,
-    //   this.gender.value
-    //   );
-      this._authService.register(this.registerForm.value)
+    this._authService.register(this.registerForm.value)
       .subscribe(next => {
         console.log(next);
-      }, error => console.log(error));    
-    // console.log(this.registerForm.value);
+      }, error => console.log(error));
   }
 
   ngOnInit(): void {

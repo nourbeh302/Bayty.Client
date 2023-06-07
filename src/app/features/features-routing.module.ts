@@ -6,6 +6,7 @@ import { AdvertisementModule } from "./advertisement/advertisement.module";
 import { PaymentModule } from "./payment/payment.module";
 import { ChatModule } from "./chat/chat.module";
 import { NotificationsModule } from "./notifications/notifications.module";
+import { AdminModule } from "./admin/admin.module";
 
 const routes: Routes = [
   { path: "", loadComponent: () => AuthModule },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: "payment", loadChildren: () => PaymentModule },
   { path: "chat", loadChildren: () => ChatModule },
   { path: "notifications", loadChildren: () => NotificationsModule },
+  { path: "admin", loadChildren: () => AdminModule },
 ];
 
 @NgModule({

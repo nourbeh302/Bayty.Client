@@ -37,24 +37,25 @@ export class LoginComponent implements OnInit {
   login() {
     console.log(this.email?.value, this.password?.value, this.rememberMe?.value);
 
-    this.authService.login(this.email?.value, this.password?.value, this.rememberMe?.value)
-      .subscribe(next => {
-        localStorage.setItem("accessToken", next["accessToken"]);
-        localStorage.setItem("accessTokenLifeTime", next["accessTokenLifeTime"]);
-        localStorage.setItem("isAuthenticated", next["isAuthenticated"]);
-        localStorage.setItem("refreshToken", next["refreshToken"]);
-        localStorage.setItem("refreshTokenLifeTime", next["refreshTokenLifeTime"]);
-        console.log(next)
-
-      }, error => console.log(error));
-
-      
-      if(this.isLoggedIn()){
-          this.router.navigateByUrl("");
+    this.authService.login(this.email?.value, this.password?.value, this.rememberMe?.value).then((res) => {
+      if (res === 400) {
+        console.log('Invalid email password pair');
       }
-      else{
-        console.log("Access Denied");
+      if (res === 500) {
+        console.log('Server error');
       }
+      if (res === 200) {
+        this.router.navigateByUrl("");
+      }
+    })
+
+    // if (this.isLoggedIn()) {
+    //   this.router.navigateByUrl("");
+    // }
+
+    // else {
+    //   console.log("Access Denied");
+    // }
     // of(this.authService.login(this.email?.value, this.password?.value, this.rememberMe?.value)
     // ).subscribe({
     //   next: (v) => console.log({v: v}),
@@ -63,9 +64,9 @@ export class LoginComponent implements OnInit {
 
     // })
 
- 
+
   }
-  isLoggedIn(){
+  isLoggedIn() {
     return this.authService.isLoggedIn();
   }
 }

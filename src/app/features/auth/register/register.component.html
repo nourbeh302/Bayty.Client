@@ -86,24 +86,6 @@
           <label for="age">Age</label>
           <input id="age" type="number" min="0" max="100" formControlName="age" placeholder="Years old">
         </div>
-
-        <div class="form-field">
-          <label for="gender">Gender</label>
-          <select formControlName="gender">
-            <option selected>Choose gender</option>
-            <option *ngFor="let gender of enumKeys">{{ gender }}</option>
-          </select>
-          <!-- <div class="c-form-field c-select">
-            <select placeholder="Property Type">
-              <option value="" selected>Property Type</option>
-              <option value="">Villa</option>
-              <option value="">Apartment</option>
-            </select>
-            <div class="select-icon">
-              <i class="icon icon-ic_fluent_chevron_down_20_regular"></i>
-            </div>
-          </div> -->
-        </div>
       </div>
 
       <div class="login-cta">
