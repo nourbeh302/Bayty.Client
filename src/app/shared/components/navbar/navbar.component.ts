@@ -10,8 +10,6 @@ import { ThemeService } from "src/app/core/services/dark-mode.service";
 })
 export class NavbarComponent implements OnInit {
 
-  isUserLoggedIn: boolean = false;
-
   isNavbarCollapseToggled: boolean = false;
 
   theme: object = {
@@ -32,10 +30,11 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authService.isLoggedIn()
-      .subscribe((next) => this.isUserLoggedIn = next, (err) => console.log(err)
-      )
     this.setColorScheme('light');
+  }
+
+  getIsLoggedIn() {
+    return this.authService.getIsLoggedIn()
   }
 
   signOut() {

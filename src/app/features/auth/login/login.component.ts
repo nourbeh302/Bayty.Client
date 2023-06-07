@@ -1,13 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { Gender } from "src/app/core/enums/Gender";
-import { Role } from "src/app/core/enums/Role";
-import { Account } from "src/app/core/models/Account";
-import { User } from "src/app/core/models/User";
 import { AuthService } from "src/app/core/services/auth.service";
 import { Login } from "src/app/core/models/Login";
-import { HttpInterceptor } from "@angular/common/http";
-import { of } from "rxjs";
 import { Router } from "@angular/router";
 
 @Component({
@@ -23,50 +17,41 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  /* Form components */
   loginForm: FormGroup = new FormGroup({
-    email: new FormControl(this.user.emailOrPhone, Validators.required),
-    password: new FormControl(this.user.password, Validators.required),
+    email: new FormControl(this.user.emailOrPhone, Validators.compose([
+      Validators.required,
+      Validators.email
+    ])),
+    password: new FormControl(this.user.password, Validators.compose([
+      Validators.required,
+      Validators.minLength(8),
+      Validators.maxLength(32),
+    ])),
     rememberMe: new FormControl(this.user.rememberMe),
   });
 
-
+  /* Getters and setters */
   get email() { return this.loginForm.get("email"); }
   get password() { return this.loginForm.get("password"); }
   get rememberMe() { return this.loginForm.get("rememberMe") }
 
+  /* Component methods */
   login() {
-    console.log(this.email?.value, this.password?.value, this.rememberMe?.value);
-
-    this.authService.login(this.email?.value, this.password?.value, this.rememberMe?.value).then((res) => {
-      if (res === 400) {
-        console.log('Invalid email password pair');
-      }
-      if (res === 500) {
-        console.log('Server error');
-      }
-      if (res === 200) {
-        this.router.navigateByUrl("");
-      }
-    })
-
-    // if (this.isLoggedIn()) {
-    //   this.router.navigateByUrl("");
-    // }
-
-    // else {
-    //   console.log("Access Denied");
-    // }
-    // of(this.authService.login(this.email?.value, this.password?.value, this.rememberMe?.value)
-    // ).subscribe({
-    //   next: (v) => console.log({v: v}),
-    //   error: (e) => console.error({e: e}),
-    //   complete: () => console.info('complete')
-
-    // })
-
-
+    if (this.loginForm.valid) {
+      this.authService.login(this.email?.value, this.password?.value, this.rememberMe?.value)
+      .subscribe(
+        (next) => {
+          // Handle successful login here
+          this.router.navigate(["/"])
+          this.authService.saveCredentials(next)
+        },
+        (error) => this.loginForm.setErrors({ 'invalidCredentials': true }) // Handle error here
+      );
+    }
   }
+
   isLoggedIn() {
-    return this.authService.isLoggedIn();
+    return this.authService.getIsLoggedIn();
   }
 }

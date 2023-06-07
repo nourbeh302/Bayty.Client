@@ -14,6 +14,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from "@angular/common/http";
 import { SharedModule } from "./shared/shared.module";
+import { AuthGuard } from "./core/guards/auth.guard";
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent, LoaderComponent],

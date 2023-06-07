@@ -7,6 +7,7 @@ import { CoreRoutingModule } from "./core-routing.module";
 import { HomeModule } from "./pages/home/home.module";
 import { NotFoundModule } from "./pages/not-found/not-found.module";
 import { PrivacyComponent } from './pages/privacy/privacy.component';
+import { AuthGuard } from "./guards/auth.guard";
 
 @NgModule({
   declarations: [
@@ -21,5 +22,6 @@ import { PrivacyComponent } from './pages/privacy/privacy.component';
     NotFoundModule,
   ],
   exports: [HttpClientModule],
+  providers: [AuthGuard]
 })
 export class CoreModule { }

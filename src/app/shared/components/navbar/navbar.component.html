@@ -6,7 +6,7 @@
         <img *ngIf="currentLang == 'ar'" src="/assets/images/bayty-ar.svg" alt="">
       </a>
     </div>
-    <div class="navbar-right" *ngIf="isUserLoggedIn; else signedOutBlock">
+    <div class="navbar-right" *ngIf="getIsLoggedIn(); else signedOutBlock">
       <div class="navbar-links">
         <a class="button-icon notification-button" routerLink="notifications">
           <i class="icon icon-ic_fluent_alert_20_regular"></i>
@@ -39,6 +39,7 @@
         </div>
         <div class="navbar-cta">
           <button class="button button-tertiary" routerLink="advertisement/create">{{ "Post" | translate }}</button>
+          <button class="button button-tertiary" routerLink="chat">{{ "Chat" | translate }}</button>
           <a class="button button-tertiary" routerLink="advertisement/search">{{ "Properties" | translate }}</a>
           <a class="button button-tertiary" routerLink="privacy">{{ "Privacy" | translate }}</a>
           <span></span>

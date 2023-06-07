@@ -1,60 +1,46 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { User } from '../models/User';
+import { BehaviorSubject, Observable, catchError, map, throwError } from 'rxjs';
+import { environment } from '../../../environments/environment';
 import { Account } from '../models/Account';
+
+const API = `${environment.url}/account`
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private loggedIn = new BehaviorSubject<boolean>(false);
-  private API = 'http://localhost:5034/account'
+  private isLoggedIn = false;
 
   constructor(private router: Router, private http: HttpClient) { }
 
   register(account: Account): Observable<any> {
-    // this.http.post<any>('http://localhost:5034/account/register', account) 
-    return this.http.post<any>(`${this.API}/register`, account)
+    return this.http.post<any>(`${API}/register`, account)
   }
 
-  async login(emailOrPhone: string, password: string, rememberMe: boolean) {
-
-    this.loggedIn.next(true)
-
-    try {
-      const response = await this.http.post<any>(`${this.API}/login`, {
-        email: emailOrPhone,
-        password,
-        rememberMe
-      }).subscribe((next) => this.saveCredentials(next));
-      return 200;
-    } catch (error: any) {
-      if (error.status === 400)
-        return 400;
-      return 500;
-    }
-
-    return this.http.post<any>(`${this.API}/login`, {
-      email: emailOrPhone,
-      password: password,
-      rememberMe
-    }).subscribe(next => {
-      this.saveCredentials(next)
-      console.log(next['status'])
-    }, error => console.log(error['status']))
+  login(emailOrPhone: string, password: string, rememberMe: boolean): Observable<any> {
+    this.isLoggedIn = true;
+    const body = { email: emailOrPhone, password, rememberMe };
+    return this.http.post(`${API}/login`, body)
   }
 
   logout() {
-    this.loggedIn.next(false)
+    this.isLoggedIn = false;
     this.clearCredentials()
     this.router.navigate(['/login'])
   }
 
-  isLoggedIn() {
-    return this.loggedIn
+  getIsLoggedIn() {
+    var localStorageCredentials = localStorage.getItem("accessToken");
+    if (localStorageCredentials) {
+      this.isLoggedIn = true
+    }
+    else {
+      this.isLoggedIn = false
+    }
+    return this.isLoggedIn
   }
 
   verifyEmailAddress() { }
