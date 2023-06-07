@@ -17,10 +17,8 @@ export class HomeComponent implements OnInit {
     this.translate.use(this.currentLang);
   }
 
-  ngOnInit(): void {
-    this._http.get("http://localhost:5034/account/verifyEmail")
-      .subscribe(next => {
-        console.log(next);
-      }, error => console.log(error));
-  }
+  ngOnInit(): void { }
+
+  // Form for sending filter form goes here
+  searchAdvertisements(): any { }
 }

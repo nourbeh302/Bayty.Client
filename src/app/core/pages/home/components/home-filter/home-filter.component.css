@@ -130,7 +130,7 @@ span.state {
     left: 0;
     width: 54px;
     height: 28px;
-    background: linear-gradient(45deg, var(--primary-base), var(--primary-hover-02));
+    background: var(--primary-hover);
     border-radius: 17px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
@@ -138,7 +138,6 @@ span.state {
 
 .toggle-checkbox:checked+.toggle-label {
     background: var(--rent-base);
-    background: linear-gradient(45deg, var(--rent-base), var(--rent-base));
 }
 
 .toggle-label::before {

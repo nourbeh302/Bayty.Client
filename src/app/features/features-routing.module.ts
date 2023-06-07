@@ -7,14 +7,15 @@ import { PaymentModule } from "./payment/payment.module";
 import { ChatModule } from "./chat/chat.module";
 import { NotificationsModule } from "./notifications/notifications.module";
 import { AdminModule } from "./admin/admin.module";
+import { AuthGuard } from "../core/guards/auth.guard";
 
 const routes: Routes = [
   { path: "", loadComponent: () => AuthModule },
-  { path: "profile", loadChildren: () => ProfileModule },
-  { path: "advertisement", loadChildren: () => AdvertisementModule },
-  { path: "payment", loadChildren: () => PaymentModule },
-  { path: "chat", loadChildren: () => ChatModule },
-  { path: "notifications", loadChildren: () => NotificationsModule },
+  { path: "profile", loadChildren: () => ProfileModule, canActivate: [AuthGuard] },
+  { path: "advertisement", loadChildren: () => AdvertisementModule, canActivate: [AuthGuard] },
+  { path: "payment", loadChildren: () => PaymentModule, canActivate: [AuthGuard] },
+  { path: "chat", loadChildren: () => ChatModule, canActivate: [AuthGuard] },
+  { path: "notifications", loadChildren: () => NotificationsModule, canActivate: [AuthGuard] },
   { path: "admin", loadChildren: () => AdminModule },
 ];
 
