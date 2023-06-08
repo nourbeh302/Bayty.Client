@@ -23,6 +23,7 @@ summary+p {
 }
 
 article {
+    padding-top: 16px;
     display: flex;
     flex-direction: column;
     gap: 32px;

@@ -2,11 +2,6 @@ form {
   min-height: unset;
 }
 
-.error-message {
-  color: hsl(0, 79%, 58%);
-  font-size: smaller;
-}
-
 .login-cta {
   font-size: smaller;
 }
