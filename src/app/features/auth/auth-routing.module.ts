@@ -9,6 +9,7 @@ import { CreateEnterpriseComponent } from "./create-enterprise/create-enterprise
 import { RegisterationCompletedComponent } from "./registeration-completed/registeration-completed.component";
 import { CreateNewPasswordComponent } from "./create-new-password/create-new-password.component";
 import { ResetPasswordComponent } from "./reset-password/reset-password.component";
+import { AuthGuard } from "src/app/core/guards/auth.guard";
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
@@ -17,12 +18,12 @@ const routes: Routes = [
   { path: "verifyPhoneNumber", component: VerifyPhoneNumberComponent },
   { path: "createEnterprise", component: CreateEnterpriseComponent },
   { path: "registerationCompleted", component: RegisterationCompletedComponent },
-  { path: "createNewPassword", component: CreateNewPasswordComponent },
-  { path: "resetPassword", component: ResetPasswordComponent },
+  { path: "createNewPassword", component: CreateNewPasswordComponent, canActivate: [AuthGuard] },
+  { path: "resetPassword", component: ResetPasswordComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AuthRoutingModule {}
+export class AuthRoutingModule { }

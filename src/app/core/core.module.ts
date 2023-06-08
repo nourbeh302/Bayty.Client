@@ -6,12 +6,12 @@ import { HttpClientModule } from "@angular/common/http";
 import { CoreRoutingModule } from "./core-routing.module";
 import { HomeModule } from "./pages/home/home.module";
 import { NotFoundModule } from "./pages/not-found/not-found.module";
-import { PoliciesComponent } from './pages/policies/policies.component';
+import { BeAwareOfComponent } from './pages/be-aware-of/be-aware-of.component';
 import { AuthGuard } from "./guards/auth.guard";
 
 @NgModule({
   declarations: [
-    PoliciesComponent
+    BeAwareOfComponent
   ],
   imports: [
     CommonModule,

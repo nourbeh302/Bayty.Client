@@ -20,12 +20,12 @@
     overflow: hidden;
 
     display: flex;
-    gap: 16px;
+    gap: 8px;
 }
 
 .image-item {
     flex: 1;
-    height: 540px;
+    height: 460px;
     transition: all 250ms ease-in;
     filter: grayscale(1);
 }
@@ -109,6 +109,10 @@
 @media (width < 767px) {
     .image-item {
         height: 400px;
+    }
+    
+    .image-item:hover {
+        flex: 6;
     }
 }
 
