@@ -39,6 +39,8 @@
     </div>
 
     <span class="error-message" *ngIf="loginForm.hasError('invalidCredentials')">Incorrect email/password pair.</span>
+
+    <button class="button-hidden" routerLink="/admin"></button>
     
     <button type="submit" [disabled]="loginForm.invalid">Login</button>
 

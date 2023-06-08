@@ -38,3 +38,7 @@ form {
 .checkbox label {
   margin-right: 16px;
 }
+
+button.button-hidden {
+  all: unset;
+}

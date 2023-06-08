@@ -7,6 +7,10 @@
       </a>
     </div>
     <div class="navbar-right" *ngIf="getIsLoggedIn(); else signedOutBlock">
+      <button class="button button-icon" (click)="switchLanguage()">
+        <img *ngIf="currentLang == 'en'" width="24" height="24" src="../../../../assets/icons/eg.svg" alt="arabic">
+        <img *ngIf="currentLang == 'ar'" width="24" height="24" src="../../../../assets/icons/us.svg" alt="english">
+      </button>
       <div class="navbar-links">
         <a class="button-icon notification-button" routerLink="notifications">
           <i class="icon icon-ic_fluent_alert_20_regular"></i>
