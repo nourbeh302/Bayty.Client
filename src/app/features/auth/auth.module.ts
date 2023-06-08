@@ -9,6 +9,8 @@ import { VerifyEmailComponent } from "./verify-email/verify-email.component";
 import { VerifyPhoneNumberComponent } from "./verify-phone-number/verify-phone-number.component";
 import { CreateEnterpriseComponent } from './create-enterprise/create-enterprise.component';
 import { RegisterationCompletedComponent } from './registeration-completed/registeration-completed.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { CreateNewPasswordComponent } from './create-new-password/create-new-password.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { RegisterationCompletedComponent } from './registeration-completed/regis
     VerifyPhoneNumberComponent,
     CreateEnterpriseComponent,
     RegisterationCompletedComponent,
+    ResetPasswordComponent,
+    CreateNewPasswordComponent,
   ],
   imports: [CommonModule, AuthRoutingModule, ReactiveFormsModule],
 })

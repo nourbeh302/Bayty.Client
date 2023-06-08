@@ -7,6 +7,8 @@ import { VerifyEmailComponent } from "./verify-email/verify-email.component";
 import { VerifyPhoneNumberComponent } from "./verify-phone-number/verify-phone-number.component";
 import { CreateEnterpriseComponent } from "./create-enterprise/create-enterprise.component";
 import { RegisterationCompletedComponent } from "./registeration-completed/registeration-completed.component";
+import { CreateNewPasswordComponent } from "./create-new-password/create-new-password.component";
+import { ResetPasswordComponent } from "./reset-password/reset-password.component";
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
@@ -15,6 +17,8 @@ const routes: Routes = [
   { path: "verifyPhoneNumber", component: VerifyPhoneNumberComponent },
   { path: "createEnterprise", component: CreateEnterpriseComponent },
   { path: "registerationCompleted", component: RegisterationCompletedComponent },
+  { path: "createNewPassword", component: CreateNewPasswordComponent },
+  { path: "resetPassword", component: ResetPasswordComponent },
 ];
 
 @NgModule({
