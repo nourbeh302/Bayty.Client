@@ -1,9 +1,0 @@
-<div class="item transaction-item">
-    <div class="id">#{{ transaction.transactionId }}</div>
-    <div class="createdAt">{{ transaction.createdAt }}</div>
-    <div [class]="
-    transaction.status.includes('completed') ? 'status chip chip-completed' : 
-    transaction.status.includes('draft') ? 'status chip chip-draft' : 
-    transaction.status.includes('pending') ? 'status chip chip-pending' :'status chip chip-cancelled'">{{
-        transaction.status }}</div>
-</div>

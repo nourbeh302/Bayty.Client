@@ -11,6 +11,7 @@ import { CreateEnterpriseComponent } from './create-enterprise/create-enterprise
 import { RegisterationCompletedComponent } from './registeration-completed/registeration-completed.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { CreateNewPasswordComponent } from './create-new-password/create-new-password.component';
+import { CreateRoleComponent } from './create-role/create-role.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CreateNewPasswordComponent } from './create-new-password/create-new-pas
     RegisterationCompletedComponent,
     ResetPasswordComponent,
     CreateNewPasswordComponent,
+    CreateRoleComponent,
   ],
   imports: [CommonModule, AuthRoutingModule, ReactiveFormsModule],
 })

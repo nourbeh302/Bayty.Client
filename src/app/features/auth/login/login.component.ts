@@ -42,6 +42,8 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.email?.value, this.password?.value, this.rememberMe?.value)
       .subscribe(
         (next) => {
+          console.log(next);
+          
           // Handle successful login here
           this.router.navigate(["/"])
           this.authService.saveCredentials(next)

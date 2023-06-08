@@ -1,0 +1,37 @@
+.page-wrapper {
+    padding-block: 32px;
+}
+
+input {
+    background: white;
+}
+
+.page-wrapper h1 {
+    margin-bottom: 32px;
+}
+
+.otp-field {
+    max-width: 300px;
+}
+
+.otp-group {
+    display: flex;
+    gap: 8px;
+}
+
+.otp-group input::-webkit-outer-spin-button,
+.otp-group input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    text-align: center;
+    font-size: 20px;
+}
+span {
+    color: var(--grey-base);
+    font-size: 14px;
+    display: block;
+    margin-top: 8px;
+}

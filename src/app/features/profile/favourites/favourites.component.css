@@ -2,14 +2,14 @@
     padding-block: 32px;
 }
 
-.transactions-container {
+.favourites-container {
     margin-top: 32px;
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
 
-.transactions-header {
+.favourites-header {
     background: #f4f4f4;
     padding: 32px;
     box-shadow: var(--layout-shadow);
@@ -19,12 +19,12 @@
     gap: 32px;
 }
 
-.transactions-header>*:last-child {
+.favourites-header>*:last-child {
     margin-left: auto;
 }
 
 @media (width < 625px) {
-    .transactions-header {
+    .favourites-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 16px;

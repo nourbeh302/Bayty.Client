@@ -37,6 +37,6 @@
     background: var(--success-base);
 }
 
-.notification-item.cancelled-transaction::before {
+.notification-item.cancelled-favourite::before {
     background: var(--error-base);
 }

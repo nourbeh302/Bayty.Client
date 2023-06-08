@@ -10,6 +10,7 @@ import { RegisterationCompletedComponent } from "./registeration-completed/regis
 import { CreateNewPasswordComponent } from "./create-new-password/create-new-password.component";
 import { ResetPasswordComponent } from "./reset-password/reset-password.component";
 import { AuthGuard } from "src/app/core/guards/auth.guard";
+import { CreateRoleComponent } from "./create-role/create-role.component";
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: "registerationCompleted", component: RegisterationCompletedComponent },
   { path: "createNewPassword", component: CreateNewPasswordComponent, canActivate: [AuthGuard] },
   { path: "resetPassword", component: ResetPasswordComponent, canActivate: [AuthGuard] },
+  { path: "createRole", component: CreateRoleComponent },
 ];
 
 @NgModule({

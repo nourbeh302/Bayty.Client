@@ -1,6 +1,6 @@
 export class Transaction {
     constructor(
-        public transactionId: string = "",
+        public favouriteId: string = "",
         public createdAt: string = "",
         public status: string = ""
     ) { }

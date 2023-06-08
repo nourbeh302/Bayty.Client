@@ -6,9 +6,9 @@
     margin-top: 32px;
     display: grid;
     grid-template-areas:
-        "users transactions"
-        "users transactions"
-        "requests transactions";
+        "users favourites"
+        "users favourites"
+        "requests favourites";
     grid-auto-rows: auto;
     gap: 32px;
 }
@@ -30,8 +30,8 @@
     grid-area: users;
 }
 
-.transactions {
-    grid-area: transactions;
+.favourites {
+    grid-area: favourites;
 }
 
 .requests {
@@ -48,7 +48,7 @@
     .grid-container {
         grid-template-areas:
             "users"
-            "transactions"
+            "favourites"
             "requests";
 
         grid-auto-rows: auto;

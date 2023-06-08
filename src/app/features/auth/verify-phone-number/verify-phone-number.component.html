@@ -1,1 +1,26 @@
-<p>verify-phone-number works!</p>
+<div class="container page-wrapper">
+    <h1>Verify Phone Number</h1>
+
+    <button class="button button-secondary" (click)="sendOTPCode()">Send OTP</button>
+
+    <div *ngIf="isOTPToggled">
+        <div class="form-group">
+            <div class="form-splitter split-6 otp-field">
+                <div class="form-field">
+                    <label for="OTP">Enter OTP</label>
+                    <div class="otp-group">
+                        <input id="number-01" type="number" minlength="1" maxlength="1">
+                        <input id="number-02" type="number" minlength="1" maxlength="1">
+                        <input id="number-03" type="number" minlength="1" maxlength="1">
+                        <input id="number-04" type="number" minlength="1" maxlength="1">
+                    </div>
+                    <!-- <span class="error-message">This phone number is incorrect</span> -->
+                </div>
+            </div>
+        </div>
+        <button class="button button-primary" (click)="toggleOTPInput()">Verify</button>
+        <span>Haven't received the OTP? <a href="">Resend</a></span>
+    </div>
+
+
+</div>

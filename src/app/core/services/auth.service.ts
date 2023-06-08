@@ -23,7 +23,7 @@ export class AuthService {
   login(emailOrPhone: string, password: string, rememberMe: boolean): Observable<any> {
     this.isLoggedIn = true;
     const body = { email: emailOrPhone, password, rememberMe };
-    return this.http.post(`${API}/login`, body)
+    return this.http.post(`${API}/verifyPhoneNumber`, body)
   }
 
   logout() {
@@ -43,7 +43,17 @@ export class AuthService {
     return this.isLoggedIn
   }
 
-  verifyEmailAddress() { }
+  askForPhoneNumberVerification() {
+    var userId = localStorage.getItem("userId");
+    return this.http.get<any>(`${API}/askForPhoneNumberVerification/${userId}`)
+  }
+
+  sendOTPCode() {
+    var refreshToken = localStorage.getItem("refreshToken");
+    var userId = localStorage.getItem("userId");
+    
+    return this.http.post<any>(`${API}/verifyPhoneNumber`, { refreshToken, userId })
+  }
 
   verifyPhoneNumber() { }
 
@@ -53,6 +63,7 @@ export class AuthService {
     localStorage.setItem("isAuthenticated", next["isAuthenticated"]);
     localStorage.setItem("refreshToken", next["refreshToken"]);
     localStorage.setItem("refreshTokenLifeTime", next["refreshTokenLifeTime"]);
+    localStorage.setItem("userId", next["userId"]);
   }
 
   clearCredentials() {
@@ -61,6 +72,7 @@ export class AuthService {
     localStorage.removeItem("isAuthenticated");
     localStorage.removeItem("refreshToken");
     localStorage.removeItem("refreshTokenLifeTime");
+    localStorage.removeItem("userId");
   }
 
 }
