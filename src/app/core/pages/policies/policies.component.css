@@ -5,9 +5,17 @@
 .card {
     margin-top: 32px;
     background: white;
-    padding: 32px;
     box-shadow: var(--layout-shadow);
     border-radius: 8px;
+    cursor: pointer;
+}
+
+.card:hover {
+    background: #f4f3f3;
+}
+
+summary, article {
+    padding: 32px;
 }
 
 summary+p {
@@ -20,16 +28,16 @@ article {
     gap: 32px;
 }
 
-article>div:first-child {
-    margin-top: 32px;
-}
-
-article ul li {
-    list-style: circle;
+article ol li {
+    list-style: decimal;
     margin-left: 20px;
-    margin-block: 4px;
+    margin-block: 16px;
 }
 
 article strong {
     margin-bottom: 8px;
+}
+
+article em {
+    font-size: 14px;
 }

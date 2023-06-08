@@ -6,12 +6,12 @@ import { HttpClientModule } from "@angular/common/http";
 import { CoreRoutingModule } from "./core-routing.module";
 import { HomeModule } from "./pages/home/home.module";
 import { NotFoundModule } from "./pages/not-found/not-found.module";
-import { PrivacyComponent } from './pages/privacy/privacy.component';
+import { PoliciesComponent } from './pages/policies/policies.component';
 import { AuthGuard } from "./guards/auth.guard";
 
 @NgModule({
   declarations: [
-    PrivacyComponent
+    PoliciesComponent
   ],
   imports: [
     CommonModule,
