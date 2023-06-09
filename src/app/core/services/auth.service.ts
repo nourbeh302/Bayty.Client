@@ -23,7 +23,7 @@ export class AuthService {
   login(emailOrPhone: string, password: string, rememberMe: boolean): Observable<any> {
     this.isLoggedIn = true;
     const body = { email: emailOrPhone, password, rememberMe };
-    return this.http.post(`${API}/verifyPhoneNumber`, body)
+    return this.http.post(`${API}/login`, body)
   }
 
   logout() {
