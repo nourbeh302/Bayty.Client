@@ -1,8 +1,13 @@
 <div class="page-wrapper container">
     <h1>List new properties</h1>
 
-    <form class="form" (submit)="onSubmit($event)">
+    <form class="form" (submit)="onSubmit()">
         <div class="form-group">
+            <div class="form-field">
+                <label for="state">Title</label>
+                <input type="text" placeholder="Rent">
+            </div>
+
             <div class="form-field">
                 <label for="state">Property State</label>
                 <input type="text" placeholder="Rent">
@@ -40,6 +45,11 @@
             <div class="form-field">
                 <label for="furnishing">Furnishing</label>
                 <input type="text" placeholder="Fully furnished">
+            </div>
+
+            <div class="form-field">
+                <label for="state">Property State</label>
+                <input type="text" placeholder="Rent">
             </div>
 
 

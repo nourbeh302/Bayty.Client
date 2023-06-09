@@ -1,4 +1,14 @@
 import { Component } from "@angular/core";
+import { AdvertisementService } from "src/app/core/services/advertisement.service";
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from "@angular/forms";
+import { Advertisment } from "src/app/core/models/Advertisement";
+import { Account } from "src/app/core/models/Account";
+import { PaymentType } from "src/app/core/enums/PaymentType";
 
 @Component({
   selector: "app-create-advertisement",
@@ -7,6 +17,12 @@ import { Component } from "@angular/core";
 })
 export class CreateAdvertisementComponent {
   images: number[] = [];
+  constructor(private _advertisementService: AdvertisementService, private user: Account){}
+
+  
+  ad: Advertisment = new Advertisment("", "", "", "", 0, 0, "", "", false, 0, 0, 0, false, false, false, this.user, "", PaymentType.Cash);
+
+
 
   addImage(): void {
     this.images.push(1);
@@ -21,13 +37,18 @@ export class CreateAdvertisementComponent {
     this.images.push(event.target.files.item(0));
   }
 
-  onSubmit(e: any) {
-    e.preventDefault();
-    if (this.fileToUpload) {
-      // TODO: Upload file to server
-      console.log('File uploaded successfully');
-      console.log(this.fileToUpload);
-    }
+  onSubmit() {
+    // e.preventDefault();
+    // if (this.fileToUpload) {
+    //   // TODO: Upload file to server
+    //   console.log('File uploaded successfully');
+    //   console.log(this.fileToUpload);
+    // }
+
+    this._advertisementService.post(this.ad)
+      .subscribe(next => {
+        console.log(next);
+      }, error => console.log(error));
   }
 }
 
