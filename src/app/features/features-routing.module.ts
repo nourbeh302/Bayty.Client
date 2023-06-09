@@ -12,7 +12,7 @@ import { AuthGuard } from "../core/guards/auth.guard";
 const routes: Routes = [
   { path: "", loadComponent: () => AuthModule },
   { path: "profile", loadChildren: () => ProfileModule, canActivate: [AuthGuard] },
-  { path: "advertisement", loadChildren: () => AdvertisementModule, canActivate: [AuthGuard] },
+  { path: "advertisement", loadChildren: () => AdvertisementModule },
   { path: "payment", loadChildren: () => PaymentModule, canActivate: [AuthGuard] },
   { path: "chat", loadChildren: () => ChatModule, canActivate: [AuthGuard] },
   { path: "notifications", loadChildren: () => NotificationsModule, canActivate: [AuthGuard] },
@@ -23,4 +23,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class FeaturesRoutingModule {}
+export class FeaturesRoutingModule { }

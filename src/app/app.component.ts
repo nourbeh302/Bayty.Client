@@ -13,7 +13,5 @@ export class AppComponent {
 
   constructor(public translate: TranslateService) { }
 
-  switchLanguage(event: any) {
-    this.translate.use(event.target.value);
-  }
+  switchLanguage(event: any) { this.translate.use(event.target.value); }
 }

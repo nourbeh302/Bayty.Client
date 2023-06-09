@@ -45,17 +45,15 @@ export class AuthService {
 
   askForPhoneNumberVerification() {
     var userId = localStorage.getItem("userId");
-    return this.http.get<any>(`${API}/askForPhoneNumberVerification/${userId}`)
+    // var token = this.http.get<any>(`${API}/askForPhoneNumberVerification/${userId}`)
+    var token = this.http.get<any>(`${API}/askForPhoneNumberVerification/?userId=${userId}`)
+    return token
   }
 
-  sendOTPCode() {
-    var refreshToken = localStorage.getItem("refreshToken");
-    var userId = localStorage.getItem("userId");
-    
-    return this.http.post<any>(`${API}/verifyPhoneNumber`, { refreshToken, userId })
+  verifyPhoneNumber(token: string) {
+    var userId = localStorage.getItem("userId");    
+    return this.http.post<any>(`${API}/verifyPhoneNumber`, { token, userId })
   }
-
-  verifyPhoneNumber() { }
 
   saveCredentials(next: any) {
     localStorage.setItem("accessToken", next["accessToken"]);
