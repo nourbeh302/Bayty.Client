@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { AdvertisementRoutingModule } from "./advertisement-routing.module";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { CreateAdvertisementComponent } from "./create-advertisement/create-advertisement.component";
 import { SearchAdvertisementComponent } from "./search-advertisement/search-advertisement.component";
@@ -15,6 +15,6 @@ import { UpdateAdvertisementComponent } from './update-advertisement/update-adve
     AdvertisementDetailsComponent,
     UpdateAdvertisementComponent,
   ],
-  imports: [CommonModule, AdvertisementRoutingModule, FormsModule],
+  imports: [CommonModule, AdvertisementRoutingModule, FormsModule, ReactiveFormsModule],
 })
 export class AdvertisementModule {}

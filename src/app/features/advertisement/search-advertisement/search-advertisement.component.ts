@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Advertisment } from "src/app/core/models/Advertisement";
+import { Advertisement } from "src/app/core/models/Advertisement";
 import { AdvertisementService } from "src/app/core/services/advertisement.service";
 
 @Component({
@@ -8,7 +8,7 @@ import { AdvertisementService } from "src/app/core/services/advertisement.servic
   styleUrls: ["./search-advertisement.component.css"],
 })
 export class SearchAdvertisementComponent {
-  advertisements: Advertisment[] = [];
+  advertisements: Advertisement[] = [];
 
   /**
    *

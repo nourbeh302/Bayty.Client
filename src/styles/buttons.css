@@ -15,6 +15,12 @@ button {
     width: 100%;
 }
 
+.button[disabled], .button:hover[disabled] {
+    background: var(--grey-base);
+    color: white;
+    border: 2px solid var(--grey-base);
+}
+
 /*#region Primary Button  */
 .button-primary {
     background: white;

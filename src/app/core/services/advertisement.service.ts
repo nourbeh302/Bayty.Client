@@ -3,7 +3,11 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../models/User';
-import { Advertisment } from '../models/Advertisement';
+import { Advertisement } from '../models/Advertisement';
+import { PostAdvertisement } from '../models/PostAdvertisement';
+import { environment } from 'src/environments/environment';
+
+const API = `${environment.url}/ad/advertisement`
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +15,12 @@ import { Advertisment } from '../models/Advertisement';
 export class AdvertisementService {
 
   private loggedIn = new BehaviorSubject<boolean>(false);
-  private advertisements = new Observable<Advertisment[]>
+  private advertisements = new Observable<Advertisement[]>
 
   constructor(private router: Router, private _http: HttpClient) { }
 
   getSingle(advertisementId: number) {
-    this._http.get<any>(`https://localhost:7094/advertisement/${advertisementId}`)
+    this._http.get<any>(`${API}/${advertisementId}`)
       .subscribe(next => {
         console.log(next);
       }, error => {
@@ -25,17 +29,12 @@ export class AdvertisementService {
   }
 
   getAll() {
-    this.advertisements = this._http.get<Advertisment[]>(`https://localhost:7094/advertisement/`)
+    this.advertisements = this._http.get<Advertisement[]>(`${API}`)
     return this.advertisements
   }
 
-  post(advertisement: Advertisment) {
-    this._http.post<any>('https://localhost:7094/advertisement', advertisement)
-      .subscribe(next => {
-        console.log(next);
-      }, error => {
-        console.log(error);
-      });
+  post(advertisement: PostAdvertisement) {
+    return this._http.post<any>(`${API}/addAdvertisement`, advertisement)
   }
 
   delete(advertisementId: number) {

@@ -1,14 +1,16 @@
-import { Component } from "@angular/core";
+import { Component, ElementRef, ViewChild } from "@angular/core";
 import { AdvertisementService } from "src/app/core/services/advertisement.service";
 import {
-  FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from "@angular/forms";
-import { Advertisment } from "src/app/core/models/Advertisement";
-import { Account } from "src/app/core/models/Account";
+import { Advertisement } from "src/app/core/models/Advertisement";
 import { PaymentType } from "src/app/core/enums/PaymentType";
+import { User } from "src/app/core/models/User";
+import { PostAdvertisement } from "src/app/core/models/PostAdvertisement";
+import { AuthService } from "src/app/core/services/auth.service";
+import { PropertyType } from "src/app/core/enums/PropertyType";
 
 @Component({
   selector: "app-create-advertisement",
@@ -16,26 +18,157 @@ import { PaymentType } from "src/app/core/enums/PaymentType";
   styleUrls: ["./create-advertisement.component.css"],
 })
 export class CreateAdvertisementComponent {
+
   images: number[] = [];
-  constructor(private _advertisementService: AdvertisementService, private user: Account){}
+  advertisement: Advertisement = new Advertisement(0, "", "", "", "", 0, 0, "", "", false, 0, 0, 0, false, false, false,
+    new User(
+      "", "", "", "", "", "", 0, "", "", 0
+    ), "", PaymentType.Cash);
 
-  
-  ad: Advertisment = new Advertisment("", "", "", "", 0, 0, "", "", false, 0, 0, 0, false, false, false, this.user, "", PaymentType.Cash);
+  constructor(
+    private advertisementService: AdvertisementService,
+    private authService: AuthService,
+  ) { }
 
+  postAdvertisementForm: FormGroup = new FormGroup({
+    title: new FormControl(
+      this.advertisement.title,
+      // Validators.compose([
+      //   Validators.required,
+      // ])
+    ),
+    description: new FormControl(
+      this.advertisement.description,
+      // Validators.compose([
+      //   Validators.required,
+      // ])
+    ),
+    address: new FormControl(
+      this.advertisement.address,
+      // Validators.compose([
+      //   Validators.required,
+      // ])
+    ),
+    city: new FormControl(
+      this.advertisement.city,
+      // Validators.compose([
+      //   Validators.required,
+      // ])
+    ),
+    price: new FormControl(
+      this.advertisement.price,
+      // Validators.compose([
+      //   Validators.required,
+      // ])
+    ),
+    roomsCount: new FormControl(
+      this.advertisement.roomsCount,
+      // Validators.compose([
+      //   Validators.required,
+      // ])
+    ),
+    bathsCount: new FormControl(
+      this.advertisement.bathsCount,
+      // Validators.compose([
+      //   Validators.required,
+      // ])
+    ),
+    creationDate: new FormControl(
+      this.advertisement.creationDate,
+      // Validators.compose([
+      //   Validators.required,
+      // ])
+    ),
+    hasElevator: new FormControl(
+      this.advertisement.hasElevator,
+      // Validators.compose([
+      //   Validators.required,
+      // ])
+    ),
+    numOfFlats: new FormControl(
+      this.advertisement.numOfFlats,
+      // Validators.compose([
+      //   Validators.required,
+      // ])
+    ),
+    numOfFloors: new FormControl(
+      this.advertisement.numOfFloors,
+      // Validators.compose([
+      //   Validators.required,
+      // ])
+    ),
+    floorNumber: new FormControl(
+      this.advertisement.floorNumber,
+      // Validators.compose([
+      //   Validators.required,
+      // ])
+    ),
+    isFurnished: new FormControl(
+      this.advertisement.isFurnished,
+      // Validators.compose([
+      //   Validators.required,
+      // ])
+    ),
+    isVitalSight: new FormControl(
+      this.advertisement.isVitalSight,
+      // Validators.compose([
+      //   Validators.required,
+      // ])
+    ),
+    hasSwimming: new FormControl(
+      this.advertisement.hasSwimming,
+      // Validators.compose([
+      //   Validators.required,
+      // ])
+    ),
+    propertyType: new FormControl(
+      this.advertisement.propertyType,
+      // Validators.compose([
+      //   Validators.required,
+      // ])
+    ),
+    paymentType: new FormControl(
+      this.advertisement.paymentType,
+      // Validators.compose([
+      //   Validators.required,
+      // ])
+    ),
+  });
 
+  get title() { return this.postAdvertisementForm.get("title"); }
+  get description() { return this.postAdvertisementForm.get("description"); }
+  get address() { return this.postAdvertisementForm.get("address"); }
+  get city() { return this.postAdvertisementForm.get("city"); }
+  get price() { return this.postAdvertisementForm.get("price"); }
+  get roomsCount() { return this.postAdvertisementForm.get("roomsCount"); }
+  get bathsCount() { return this.postAdvertisementForm.get("bathsCount"); }
+  get creationDate() { return this.postAdvertisementForm.get("creationDate"); }
+  get hasElevator() { return this.postAdvertisementForm.get("hasElevator"); }
+  get numOfFlats() { return this.postAdvertisementForm.get("numOfFlats"); }
+  get numOfFloors() { return this.postAdvertisementForm.get("numOfFloors"); }
+  get floorNumber() { return this.postAdvertisementForm.get("floorNumber"); }
+  get isFurnished() { return this.postAdvertisementForm.get("isFurnished"); }
+  get isVitalSight() { return this.postAdvertisementForm.get("isVitalSight"); }
+  get hasSwimming() { return this.postAdvertisementForm.get("hasSwimming"); }
+  get user() { return this.postAdvertisementForm.get("user"); }
+  get propertyType() { return this.postAdvertisementForm.get("propertyType"); }
+  get paymentType() { return this.postAdvertisementForm.get("paymentType"); }
 
-  addImage(): void {
-    this.images.push(1);
-  }
+  formData: FormData = new FormData()
+  @ViewChild("imageToUpload") imageToUpload!: ElementRef
 
-  fileToUpload: File | null = null;
+  // addImage(): void {
+  //   this.images.push(1);
+  // }
 
-  onFileSelected(event: any) {
-    this.fileToUpload = event.target.files.item(0);
-    console.log(event.target.files.item(0));
-    
-    this.images.push(event.target.files.item(0));
-  }
+  // fileToUpload: File | null = null;
+
+  // onFileSelected(event: any) {
+  //   this.fileToUpload = event.target.files.item(0);
+  //   console.log(event.target.files.item(0));
+
+  //   this.images.push(event.target.files.item(0));
+  // }
 
   onSubmit() {
     // e.preventDefault();
@@ -45,10 +178,44 @@ export class CreateAdvertisementComponent {
     //   console.log(this.fileToUpload);
     // }
 
-    this._advertisementService.post(this.ad)
-      .subscribe(next => {
-        console.log(next);
-      }, error => console.log(error));
+    const files = this.imageToUpload.nativeElement.files!;
+
+    for (let i = 0; i < files.length; i++)
+      this.formData.append(files[i].name, files[i])
+
+    for (const key in this.postAdvertisementForm.value) {
+      if (this.postAdvertisementForm.value[key] != null || this.postAdvertisementForm.value[key] != "") {
+        this.formData.append(key, this.postAdvertisementForm.value[key])
+      }
+    }
+
+    let postAdvertisement: PostAdvertisement = new PostAdvertisement(
+      this.title?.value,
+      this.description?.value,
+      this.address?.value,
+      this.city?.value,
+      +this.price?.value,
+      +this.roomsCount?.value,
+      +this.bathsCount?.value,
+      1,
+      new Date().getDate().toString(),
+      Boolean(this.hasElevator?.value),
+      +this.numOfFlats?.value,
+      +this.numOfFloors?.value,
+      +this.floorNumber?.value,
+      Boolean(this.isFurnished?.value),
+      Boolean(this.isVitalSight?.value),
+      Boolean(this.hasSwimming?.value),
+      localStorage.getItem("userId")!,
+      this.propertyType?.value,
+      this.paymentType?.value,
+    )
+
+    postAdvertisement.propertyType = PropertyType.Villa
+    console.log(postAdvertisement);
+
+    this.advertisementService.post(postAdvertisement).subscribe(next => console.log(next), err => console.log(err.message)
+    )
   }
 }
 

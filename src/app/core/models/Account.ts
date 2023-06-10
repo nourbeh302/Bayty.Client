@@ -12,6 +12,5 @@ export class Account {
     public address: string = "",
     public phoneNumber: string = "",
     public age: number,
-
   ) {}
 }

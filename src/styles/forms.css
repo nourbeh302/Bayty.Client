@@ -73,7 +73,7 @@ textarea {
   font-size: smaller;
 }
 
-input.ng-invalid.ng-touched {
+:is(input, textarea).ng-invalid.ng-touched {
   background: hsl(0, 100%, 97%);
 }
 

@@ -32,9 +32,9 @@ label.imageUrl-container span {
     color: var(--primary-base);
 }
 
-input[type="file"] {
+/* input[type="file"] {
     display: none;
-}
+} */
 
 button[type="submit"] {
     margin-top: 24px;

@@ -32,6 +32,10 @@ export class AuthService {
     this.router.navigate(['/login'])
   }
 
+  getProfile(userId: string) {
+    return this.http.get<any>(`${API}/getProfile/?userId=${userId}`)
+  }
+
   getIsLoggedIn() {
     var localStorageCredentials = localStorage.getItem("accessToken");
     if (localStorageCredentials) {

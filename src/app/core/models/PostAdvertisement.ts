@@ -1,17 +1,17 @@
 import { PaymentType } from "../enums/PaymentType";
-import { User } from "./User";
+import { PropertyType } from "../enums/PropertyType";
 
-export class Advertisement {
+export class PostAdvertisement {
     constructor(
-        public advertisementId: number,
         public title: string,
         public description: string,
         public address: string,
         public city: string,
         public price: number,
         public roomsCount: number,
-        public bathsCount : string,
-        public creationDate: string,
+        public bathsCount: number,
+        public kitchensCount: number,
+        public creationDate: string = new Date().getDate().toString(),
         public hasElevator: boolean,
         public numOfFlats: number,
         public numOfFloors: number,
@@ -19,8 +19,8 @@ export class Advertisement {
         public isFurnished: boolean,
         public isVitalSight: boolean,
         public hasSwimming: boolean,
-        public user: User,
-        public propertyType: string,
+        public userId: string,
+        public propertyType: PropertyType,
         public paymentType: PaymentType
     ) { }
 }
