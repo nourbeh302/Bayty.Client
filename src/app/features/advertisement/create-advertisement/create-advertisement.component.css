@@ -11,6 +11,11 @@
     font-size: 48px;
 }
 
+.categories h2 {
+    text-transform: capitalize;
+    margin-block: 32px;
+}
+
 label.imageUrl-container {
     margin-top: 24px;
     gap: 4px;

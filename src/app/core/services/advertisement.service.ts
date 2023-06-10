@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -29,12 +29,14 @@ export class AdvertisementService {
   }
 
   getAll() {
-    this.advertisements = this._http.get<Advertisement[]>(`${API}`)
+    this.advertisements = this._http.get<Advertisement[]>(`${API}/getAll`)
     return this.advertisements
   }
 
-  post(advertisement: PostAdvertisement) {
-    return this._http.post<any>(`${API}/addAdvertisement`, advertisement)
+  post(advertisement: FormData) {
+    var headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data');
+    return this._http.post<any>(`${API}/addAdvertisement`, advertisement, { headers: headers })
   }
 
   delete(advertisementId: number) {

@@ -5,7 +5,7 @@ import { BeAwareOfComponent } from "./pages/be-aware-of/be-aware-of.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
-  { path: "be-aware-of", component: BeAwareOfComponent },
+  { path: "beAwareOf", component: BeAwareOfComponent },
 ];
 
 @NgModule({

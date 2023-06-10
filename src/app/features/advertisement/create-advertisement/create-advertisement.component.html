@@ -1,8 +1,10 @@
 <div class="page-wrapper container">
     <h1>List new properties</h1>
 
-    <form class="form" [formGroup]="postAdvertisementForm" (submit)="onSubmit()">
+    <form class="form" [formGroup]="postAdvertisementForm" enctype="multipart/form-data" (submit)="onSubmit()">
         <div class="form-group">
+
+            <h2>Basics</h2>
 
             <div class="form-field">
                 <label for="title">Title</label>
@@ -47,6 +49,29 @@
                         field</span>
                 </div>
                 <div class="form-field">
+                    <label for="propertyType">Property Type</label>
+                    <select value="propertyType" formControlName="propertyType">
+                        {{ propertyType }}
+                        <option value="villa">Villa</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="building">Building</option>
+                    </select>
+                    <span class="error-message"
+                        *ngIf="propertyType?.errors?.['required'] && propertyType?.touched">Please
+                        fill this
+                        field</span>
+                </div>
+                <div class="form-field">
+                    <label for="paymentType">Payment Type</label>
+                    <input type="text" placeholder="paymentType" formControlName="paymentType">
+                    <span class="error-message" *ngIf="paymentType?.errors?.['required'] && paymentType?.touched">Please
+                        fill this
+                        field</span>
+                </div>
+            </div>
+
+            <div class="form-splitter split-2">
+                <div class="form-field">
                     <label for="roomsCount">Rooms</label>
                     <input type="text" placeholder="4" formControlName="roomsCount">
                     <span class="error-message" *ngIf="roomsCount?.errors?.['required'] && roomsCount?.touched">Please
@@ -62,74 +87,83 @@
                 </div>
             </div>
 
-            <div class="form-splitter split-2">
-                <div class="form-field">
-                    <label for="hasElevator">Has Elevator</label>
-                    <input type="text" placeholder="Has Elevator" formControlName="hasElevator">
-                    <span class="error-message" *ngIf="hasElevator?.errors?.['required'] && hasElevator?.touched">Please
-                        fill this
-                        field</span>
+            <div class="categories">
+
+                <h2>{{ propertyType?.value }}</h2>
+
+                <div *ngIf="propertyType?.value == 'villa'">
+                    <div class="form-field">
+                        <label for="hasSwimming">Has swimming</label>
+                        <input type="text" placeholder="hasSwimming" formControlName="hasSwimming">
+                        <span class="error-message"
+                            *ngIf="hasSwimming?.errors?.['required'] && hasSwimming?.touched">Please
+                            fill this
+                            field</span>
+                    </div>
                 </div>
-                <div class="form-field">
-                    <label for="numOfFlats">Number of Flats</label>
-                    <input type="text" placeholder="Number of Flats" formControlName="numOfFlats">
-                    <span class="error-message" *ngIf="numOfFlats?.errors?.['required'] && numOfFlats?.touched">Please
-                        fill this
-                        field</span>
+
+                <div *ngIf="propertyType?.value == 'apartment'">
+                    <div class="form-splitter split-2">
+                        <div class="form-field">
+                            <label for="floorNumber">Floor Number</label>
+                            <input type="text" placeholder="Floor Number" formControlName="floorNumber">
+                            <span class="error-message"
+                                *ngIf="floorNumber?.errors?.['required'] && floorNumber?.touched">Please
+                                fill this
+                                field</span>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="isFurnished">Furnishing</label>
+                            <input type="text" placeholder="isFurnished" formControlName="isFurnished">
+                            <span class="error-message"
+                                *ngIf="isFurnished?.errors?.['required'] && isFurnished?.touched">Please
+                                fill this
+                                field</span>
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="isVitalSight">Is Vital Sight</label>
+                        <input type="text" placeholder="isVitalSight" formControlName="isVitalSight">
+                        <span class="error-message"
+                            *ngIf="isVitalSight?.errors?.['required'] && isVitalSight?.touched">Please
+                            fill this
+                            field</span>
+                    </div>
+                </div>
+
+                <div *ngIf="propertyType?.value == 'building'">
+                    <div class="form-field">
+                        <label for="numOfFlats">Number of Flats</label>
+                        <input type="text" placeholder="Number of Flats" formControlName="numOfFlats">
+                        <span class="error-message"
+                            *ngIf="numOfFlats?.errors?.['required'] && numOfFlats?.touched">Please
+                            fill this
+                            field</span>
+                    </div>
+                </div>
+
+                <div *ngIf="propertyType?.value == 'building' || propertyType?.value == 'apartment'">
+                    <div class="form-field">
+                        <label for="hasElevator">Has Elevator</label>
+                        <input type="text" placeholder="Has Elevator" formControlName="hasElevator">
+                        <span class="error-message"
+                            *ngIf="hasElevator?.errors?.['required'] && hasElevator?.touched">Please
+                            fill this
+                            field</span>
+                    </div>
                 </div>
             </div>
-
-            <div class="form-field">
-                <label for="floorNumber">Floor Number</label>
-                <input type="text" placeholder="Floor Number" formControlName="floorNumber">
-                <span class="error-message" *ngIf="floorNumber?.errors?.['required'] && floorNumber?.touched">Please
-                    fill this
-                    field</span>
-            </div>
-
-            <div class="form-field">
-                <label for="isFurnished">Furnishing</label>
-                <input type="text" placeholder="isFurnished" formControlName="isFurnished">
-                <span class="error-message" *ngIf="isFurnished?.errors?.['required'] && isFurnished?.touched">Please
-                    fill this
-                    field</span>
-            </div>
-
-            <div class="form-field">
-                <label for="isVitalSight">Is Vital Sight</label>
-                <input type="text" placeholder="isVitalSight" formControlName="isVitalSight">
-                <span class="error-message" *ngIf="isVitalSight?.errors?.['required'] && isVitalSight?.touched">Please
-                    fill this
-                    field</span>
-            </div>
-
-            <div class="form-splitter split-3">
-                <div class="form-field">
-                    <label for="hasSwimming">Has swimming</label>
-                    <input type="text" placeholder="hasSwimming" formControlName="hasSwimming">
-                    <span class="error-message" *ngIf="hasSwimming?.errors?.['required'] && hasSwimming?.touched">Please
-                        fill this
-                        field</span>
-                </div>
-                <div class="form-field">
-                    <label for="propertyType">Property Type</label>
-                    <input type="text" placeholder="propertyType" formControlName="propertyType">
-                    <span class="error-message"
-                        *ngIf="propertyType?.errors?.['required'] && propertyType?.touched">Please
-                        fill this
-                        field</span>
-                </div>
-                <div class="form-field">
-                    <label for="paymentType">Payment Type</label>
-                    <input type="text" placeholder="paymentType" formControlName="paymentType">
-                    <span class="error-message" *ngIf="paymentType?.errors?.['required'] && paymentType?.touched">Please
-                        fill this
-                        field</span>
-                </div>
-            </div>
+        </div>
 
 
-            <!-- <div class="form-field">
+
+
+
+
+
+        <!-- <div class="form-field">
                 <label class="imageUrl-container" for="imageUrl">
                     <i class="icon icon-ic_fluent_image_20_regular"></i>
                     <div><span>Upload an image</span> or drag and drop</div>
@@ -139,22 +173,24 @@
                 <input type="file" name="imageUrl" id="imageUrl">
             </div> -->
 
-            <input #imageToUpload type="file" multiple name="imageUrl" id="imageUrl" value="Choose image">
+        <!-- <input #imageToUpload type="file" multiple name="imageUrl" id="imageUrl" value="Choose image"> -->
 
-            <!-- <img width="256" height="256"
+        <input type="file" multiple #imageToUpload>
+        <button type="submit" class="button button-primary">Submit</button>
+
+        <!-- <img width="256" height="256"
                 src="https://images.unsplash.com/photo-1532323544230-7191fd51bc1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80"
                 alt=""> -->
-            <div class="image-group" *ngFor="let image of images">
+        <!-- <div class="image-group" *ngFor="let image of images">
                 <img width="256" height="256" [src]="imageToUpload?.name" alt="">
-            </div>
+            </div> -->
 
-            <button type="submit" class="button button-primary" [disabled]="postAdvertisementForm.invalid">Add
+        <!-- <button type="submit" class="button button-primary" [disabled]="postAdvertisementForm.invalid">Add
                 property</button>
 
             <button type="submit" class="button button-primary">Add
-                property</button>
+                property</button> -->
 
-        </div>
 
     </form>
 </div>

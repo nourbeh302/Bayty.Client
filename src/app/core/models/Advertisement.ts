@@ -19,7 +19,7 @@ export class Advertisement {
         public isFurnished: boolean,
         public isVitalSight: boolean,
         public hasSwimming: boolean,
-        public user: User,
+        public userId: string,
         public propertyType: string,
         public paymentType: PaymentType
     ) { }

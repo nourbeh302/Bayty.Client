@@ -42,3 +42,7 @@ article strong {
 article em {
     font-size: 14px;
 }
+
+.button {
+    margin-top: 32px;
+}

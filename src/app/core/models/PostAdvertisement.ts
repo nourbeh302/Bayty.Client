@@ -11,7 +11,6 @@ export class PostAdvertisement {
         public roomsCount: number,
         public bathsCount: number,
         public kitchensCount: number,
-        public creationDate: string = new Date().getDate().toString(),
         public hasElevator: boolean,
         public numOfFlats: number,
         public numOfFloors: number,
