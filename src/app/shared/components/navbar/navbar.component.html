@@ -12,7 +12,10 @@
         <img *ngIf="currentLang == 'ar'" width="24" height="24" src="../../../../assets/icons/us.svg" alt="english">
       </button>
       <div class="navbar-links">
+        
         <button class="button button-tertiary" routerLink="advertisement/create">{{ "Post" | translate }}</button>
+        <a class="button button-tertiary" routerLink="advertisement/search">{{ "Properties" | translate }}</a>
+
         <a class="button-icon notification-button" routerLink="notifications">
           <i class="icon icon-ic_fluent_alert_20_regular"></i>
         </a>
@@ -27,7 +30,7 @@
         </a>
 
         <button class="button-icon menu-button navbar-toggler" (click)="toggleNavbarCollapse()">
-          <i class="icon icon-ic_fluent_clock_20_regular"></i>
+          <i class="fa-sharp fa-solid fa-bars"></i>
         </button>
 
       </div>
@@ -39,29 +42,44 @@
       <div class="navbar-right">
         <div class="navbar-links">
           <button class="button-icon menu-button navbar-toggler" (click)="toggleNavbarCollapse()">
-            <i class="icon icon-ic_fluent_clock_20_regular"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+              viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+              <path
+                d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+            </svg>
           </button>
         </div>
         <div class="navbar-cta">
+
           <button class="button button-tertiary" routerLink="advertisement/create">{{ "Post" | translate }}</button>
+
           <button class="button button-tertiary" routerLink="chat">{{ "Chat" | translate }}</button>
+
           <a class="button button-tertiary" routerLink="advertisement/search">{{ "Properties" | translate }}</a>
+
           <a class="button button-tertiary" routerLink="be-aware-of">{{ "Privacy & Policy" | translate }}</a>
+
           <span></span>
+
           <button class="button button-icon" (click)="switchLanguage()">
             <img *ngIf="currentLang == 'en'" width="24" height="24" src="../../../../assets/icons/eg.svg" alt="arabic">
             <img *ngIf="currentLang == 'ar'" width="24" height="24" src="../../../../assets/icons/us.svg" alt="english">
           </button>
+
+          <span></span>
+
           <button id="darkMode" class="dark-theme" (click)="toggleDarkMode()">Dark</button>
-          <!-- <label class="switch">
-            <input type="checkbox">
-            <span class="slider" (click)="toggleDarkMode()"></span>
-          </label> -->
-          <button class="button button-tertiary" routerLink="login">{{
-            "Login" | translate }}</button>
-          <button class="button button-primary" routerLink="register">{{
-            "Get Started" | translate }}</button>
+
+          <button class="button button-tertiary" routerLink="login">
+            {{ "Login" | translate }}
+          </button>
+
+          <button class="button button-primary" routerLink="register">
+            {{ "Get Started" | translate }}
+          </button>
+
         </div>
+
       </div>
     </ng-template>
   </nav>

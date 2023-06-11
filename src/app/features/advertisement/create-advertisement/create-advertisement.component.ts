@@ -12,6 +12,7 @@ import { PostAdvertisement } from "src/app/core/models/PostAdvertisement";
 import { AuthService } from "src/app/core/services/auth.service";
 import { PropertyType } from "src/app/core/enums/PropertyType";
 import { HttpErrorResponse } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-create-advertisement",
@@ -28,6 +29,7 @@ export class CreateAdvertisementComponent {
   constructor(
     private advertisementService: AdvertisementService,
     private authService: AuthService,
+    private router: Router
   ) { }
 
   postAdvertisementForm: FormGroup = new FormGroup({
@@ -110,36 +112,39 @@ export class CreateAdvertisementComponent {
     }
 
     if (this.propertyType?.value == 'apartment') {
-
+      formData.append("floorNumber", this.floorNumber?.value)
+      formData.append("isFurnished", this.isFurnished?.value)
+      formData.append("isVitalSite", this.isVitalSight?.value)
+      formData.append("hasElevator", this.hasElevator?.value)
     }
 
     if (this.propertyType?.value == 'building') {
-
+      formData.append("hasElevator", this.hasElevator?.value)
+      formData.append("numberOfFlats", this.numOfFlats?.value)
+      formData.append("numberOfFloors", this.numOfFloors?.value)
     }
 
     for (let i = 0; i < files.length; i++) {
       formData.append(files[i].name, files[i])
     }
 
-    // formData.append('hasElevator', this.postAdvertisementForm.value.hasElevator);
-    // formData.append('numOfFlats', this.postAdvertisementForm.value.numOfFlats);
-    // formData.append('numOfFloors', this.postAdvertisementForm.value.numOfFloors);
-    // formData.append('floorNumber', this.postAdvertisementForm.value.floorNumber);
-    // formData.append('isFurnished', this.postAdvertisementForm.value.isFurnished);
-    // formData.append('isVitalSight', this.postAdvertisementForm.value.isVitalSight);
-    // formData.append('hasSwimming', this.postAdvertisementForm.value.hasSwimming);
-    // formData.append('propertyType', this.postAdvertisementForm.value.propertyType);
-    // formData.append('paymentType', this.postAdvertisementForm.value.paymentType);
-
     this.advertisementService.post(formData).subscribe(next => console.log(next), (err: HttpErrorResponse) => {
-      console.log(err.error['errors'])
+      console.log(err.error)
       if (err.status === 400) {
-        // 
+        // Model is incomplete
+      }
+      if (err.status === 401) {
+        // Error message: user should be email and phonenumber
+      }
+      if (err.status === 403) {
+        // Exceeded number of posts per user
       }
       if (err.status === 500) {
-        // 
+        // Server error
       }
     })
+
+    this.router.navigate([''])
   }
 }
 

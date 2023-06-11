@@ -1,16 +1,12 @@
-import { HttpClient } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { AuthService } from "src/app/core/services/auth.service";
 import {
-  FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from "@angular/forms";
-import { Gender } from "src/app/core/enums/Gender";
-import { Role } from "src/app/core/enums/Role";
+import { AccountType } from "src/app/core/enums/AccountType";
 
-import { User } from "src/app/core/models/User";
 import { Account } from "src/app/core/models/Account";
 
 @Component({
@@ -19,12 +15,15 @@ import { Account } from "src/app/core/models/Account";
   styleUrls: ["./register.component.css"],
 })
 export class RegisterComponent implements OnInit {
-  user: Account = new Account("", "", "", "", "", "", 0, "", "", 0);
+  personalImage: Blob = new Blob()
+  user: Account = new Account("", "", "", "", "", "", this.personalImage, AccountType.Personal, "", "", 0);
+  
+  @ViewChild("imageToUpload") imageToUpload!: ElementRef
 
   constructor(private _authService: AuthService) { }
 
   registerForm: FormGroup = new FormGroup({
-    profileImage: new FormGroup(this.user.profileImage),
+    profileImage: new FormGroup(""),
     firstName: new FormControl(
       this.user.firstName,
       Validators.compose([
@@ -93,11 +92,9 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get("age");
   }
 
-  changeGender: Function = (event: any): void =>
-    (this.registerForm.value.gender = event.target.value);
-
   register() {
-    this._authService.register(this.registerForm.value)
+    this.personalImage = this.imageToUpload.nativeElement.files[0]
+    this._authService.register(this.registerForm.value, this.personalImage)
       .subscribe(next => {
         console.log(next);
       }, error => console.log(error));
@@ -107,12 +104,16 @@ export class RegisterComponent implements OnInit {
     console.log(this.registerForm.value.profileImage);
   }
 
-  onImgSelected: Function = (event: any): void => {
-    if (event.target.files) {
+  onImgSelected: Function = (): void => {
+    console.log(this.imageToUpload.nativeElement.files[0]);
+    
+    if (this.imageToUpload.nativeElement.files[0]) {
       let reader = new FileReader();
-      reader.readAsDataURL(event.target.files[0]);
+      reader.readAsDataURL(this.imageToUpload.nativeElement.files[0]);
       reader.onload = (e: any) =>
-        (this.registerForm.value.profileImage = e.target.result);
+      {console.log(e);
+      
+        (this.registerForm.value.profileImage = e.target.result);}
     }
   };
 }

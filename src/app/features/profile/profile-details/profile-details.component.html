@@ -29,8 +29,8 @@
     <img width="128" height="128"
       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
       alt="Avatar">
-    <h2>Muhammad Fawky</h2>
-    <h3>Personal Account</h3>
+    <h2>{{ account.firstName }} {{ account.lastName }}</h2>
+    <h3>{{ account.accountType }} Account</h3>
     <hr>
     <a routerLink="/edit" class="button button-secondary">Edit</a>
   </div>

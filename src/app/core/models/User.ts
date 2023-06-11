@@ -1,5 +1,5 @@
 import { Gender } from "../enums/Gender";
-import { Role } from "../enums/Role";
+import { AccountType } from "../enums/AccountType";
 import { Account } from "./Account";
 
 export class User extends Account {

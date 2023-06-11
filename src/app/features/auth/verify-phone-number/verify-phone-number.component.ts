@@ -1,4 +1,6 @@
+import { HttpErrorResponse } from "@angular/common/http";
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 import { AuthService } from "src/app/core/services/auth.service";
 
 @Component({
@@ -16,7 +18,7 @@ export class VerifyPhoneNumberComponent {
   digit05: string = ""
   digit06: string = ""
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   toggleOTPInput: Function = () => this.isOTPToggled = !this.isOTPToggled;
 
@@ -24,7 +26,7 @@ export class VerifyPhoneNumberComponent {
     this.toggleOTPInput();
     this.authService.askForPhoneNumberVerification().subscribe(next => {
       console.log(next);
-    }, error => console.log(error.message))
+    }, (err: HttpErrorResponse) => console.log(err.error))
   }
 
   verifyPhoneNumber() {
@@ -32,6 +34,7 @@ export class VerifyPhoneNumberComponent {
     this.authService.verifyPhoneNumber(token).subscribe(next => {
       // Redirect to Phone Verification completed
       console.log(next);
-    }, error => console.log(error.message))
+    }, (err: HttpErrorResponse) => console.log(err.error))
+    this.router.navigate(['profile'])
   }
 }

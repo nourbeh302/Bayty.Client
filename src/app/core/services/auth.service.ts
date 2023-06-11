@@ -16,7 +16,10 @@ export class AuthService {
 
   constructor(private router: Router, private http: HttpClient) { }
 
-  register(account: Account): Observable<any> {
+  register(account: Account, personalImage: Blob | null): Observable<any> {
+    account.personalImage = personalImage
+    console.log(account);
+    
     return this.http.post<any>(`${API}/register`, account)
   }
 
@@ -33,7 +36,14 @@ export class AuthService {
   }
 
   getProfile(userId: string) {
-    return this.http.get<any>(`${API}/getProfile/?userId=${userId}`)
+    var accessToken = localStorage.getItem("accessToken")!;
+    var refreshToken = localStorage.getItem("refreshToken")!;
+
+    var headers = new HttpHeaders()
+      .set('authorization', `Bearer ${accessToken}`)
+      .set('refresh-token', refreshToken)
+
+    return this.http.get<any>(`${API}/getProfile?userId=${userId}`, { headers })
   }
 
   getIsLoggedIn() {
@@ -49,14 +59,28 @@ export class AuthService {
 
   askForPhoneNumberVerification() {
     var userId = localStorage.getItem("userId");
-    // var token = this.http.get<any>(`${API}/askForPhoneNumberVerification/${userId}`)
-    var token = this.http.get<any>(`${API}/askForPhoneNumberVerification/?userId=${userId}`)
+    var accessToken = localStorage.getItem("accessToken")!;
+    var refreshToken = localStorage.getItem("refreshToken")!;
+
+    var headers = new HttpHeaders()
+      .set('authorization', `Bearer ${accessToken}`)
+      .set('refresh-token', refreshToken)
+
+    var token = this.http.get<any>(`${API}/askForPhoneNumberVerification/${userId}`, { headers })
     return token
   }
 
   verifyPhoneNumber(token: string) {
-    var userId = localStorage.getItem("userId");    
-    return this.http.post<any>(`${API}/verifyPhoneNumber`, { token, userId })
+    var userId = localStorage.getItem("userId");
+    var accessToken = localStorage.getItem("accessToken")!;
+    var refreshToken = localStorage.getItem("refreshToken")!;
+
+    var headers = new HttpHeaders()
+      .set('authorization', `Bearer ${accessToken}`)
+      .set('refresh-token', refreshToken)
+
+    var userId = localStorage.getItem("userId");
+    return this.http.post<any>(`${API}/verifyPhoneNumber`, { token, userId }, { headers })
   }
 
   saveCredentials(next: any) {

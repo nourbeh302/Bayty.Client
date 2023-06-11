@@ -1,4 +1,4 @@
-import { Role } from "../enums/Role";
+import { AccountType } from "../enums/AccountType";
 
 export class Account {
   constructor(
@@ -8,9 +8,10 @@ export class Account {
     public lastName: string = "",
     public profileImage: string = "",
     public imagePath: string = "",
-    public accountType: number,
+    public personalImage: Blob | null = null,
+    public accountType: AccountType,
     public address: string = "",
     public phoneNumber: string = "",
     public age: number,
-  ) {}
+  ) { }
 }

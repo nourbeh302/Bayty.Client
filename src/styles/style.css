@@ -18,6 +18,8 @@
   --draft-base: hsl(0, 0%, 42%);
   --pending-base: hsl(202, 65%, 56%);
 
+  --error-hover: hsl(0, 57%, 48%);
+
   --buy-base: hsl(198, 90%, 45%);
   --rent-base: hsl(249, 58%, 58%);
 

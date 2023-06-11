@@ -9,12 +9,12 @@
       <div class="image-center">
         <div class="image-container">
           <img
-            [src]="registerForm.value.profileImage === {} ? registerForm.value.profileImage : 'assets/images/clumsy.jpg'"
+            [src]="registerForm.value.profileImage !== '' ? registerForm.value.profileImage : 'assets/images/clumsy.jpg'"
             alt="">
           <label for="profile-image">
             <i class="icon icon-ic_fluent_camera_add_20_regular"></i>
           </label>
-          <input type="file" (change)="onImgSelected($event)" id="profile-image">
+          <input type="file" #imageToUpload (change)="onImgSelected()" id="profile-image">
         </div>
       </div>
 
@@ -33,7 +33,8 @@
 
         <div class="form-field">
           <label for="lastName">Last Name</label>
-          <input id="lastName" type="text" formControlName="lastName" minlength="3" maxlength="33" placeholder=" Doe" autocomplete="off">
+          <input id="lastName" type="text" formControlName="lastName" minlength="3" maxlength="33" placeholder=" Doe"
+            autocomplete="off">
 
           <span class="error-message" *ngIf="lastName?.errors?.['required'] && lastName?.touched">Please fill this
             field</span>
